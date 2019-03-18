@@ -6,7 +6,8 @@ body {
 #location-selection {
   padding-top: 2em;
   margin: 0em 1em 0em 1em;
-  background-color: lightblue
+  background-color: lightblue;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 #departs {
@@ -15,4 +16,26 @@ body {
 
 #arrivals {
   margin: 2em 1em 0em 1em;
+}
+
+#flightButton {
+  margin-bottom: 300em;
+}
+
+#datePicker {
+  margin-top: 20px;
+}
+
+#flightFormInputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#fltSegment {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#fltButn {
+  margin-top: 19px;
+  background-color: white;
 }

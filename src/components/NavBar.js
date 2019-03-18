@@ -11,7 +11,7 @@ class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu size='massive' color='lightblue'>
+      <Menu size='massive'>
         <Link to='/login'>
           <Menu.Item
             name='Login'
@@ -20,7 +20,7 @@ class NavBar extends Component {
           >
             Login
           </Menu.Item>
-      </Link>
+        </Link>
         <Link to='/home'>
           <Menu.Item
             name='Home'
@@ -30,7 +30,7 @@ class NavBar extends Component {
             Home
           </Menu.Item>
         </Link>
-      <Link to='/trips'>
+        <Link to='/trips'>
           <Menu.Item
             name='Add Car'
             active={activeItem === 'My Trips'}
