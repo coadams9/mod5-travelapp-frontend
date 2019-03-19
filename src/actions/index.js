@@ -1,3 +1,4 @@
+export const KEY = '76182e7747msh53b229618ef96d3p13ca06jsn4d7563f38f2c'
 
 export function searchTerm1(value) {
   return dispatch => {
