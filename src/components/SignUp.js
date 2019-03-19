@@ -31,7 +31,7 @@ class SignUp extends React.Component {
   //           newName: '',
   //           newPassword: ''
   //       })
-  //   }
+  //   } 
   //
   //   handleLogin = event => {
   //       event.preventDefault();
