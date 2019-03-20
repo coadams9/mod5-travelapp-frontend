@@ -32,6 +32,12 @@ export function searchTerm2(value) {
   }
 }
 
+export function getHotelId(code) {
+  return dispatch => {
+    dispatch({ type: 'HTL_DATA', code })
+  }
+}
+
 export function selectedDepart(dpt){
   return dispatch => {
     dispatch({ type: 'SLC_DPT', dpt })

@@ -3,7 +3,7 @@ const initialState = {
   cabin: null,
   adults: null,
   bags: null,
-  flights: []
+  flights: false
 }
 
 

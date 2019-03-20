@@ -1,8 +1,8 @@
 import React from 'react'
-import FlightGridCell from '../components/FlightGridCell'
+// import FlightGridCell from '../components/FlightGridCell'
 import ShownFlightsContainer from './ShownFlightsContainer'
 import { connect } from 'react-redux'
-import { Form, Input, Header, Segment, Container, Button } from 'semantic-ui-react'
+import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { getDepartDate, adults, cabin, bags, KEY, showFlights } from '../actions/index'
@@ -44,6 +44,15 @@ class FlightsContainer extends React.Component {
     return [year, month, day].join('-');
   }
 
+  getFlights = async (selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags, formattedDate) => {
+    let fetchedFlights = await fetch(`https://apidojo-kayak-v1.p.rapidapi.com/flights/create-session?origin1=${selectedDepart.apicode}&destination1=${selectedArrival.apicode}&departdate1=${formattedDate}&cabin=${cabinSte}&currency=USD&adults=${adultsSte}&bags=${bagsSte}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-RapidAPI-Key": KEY
+      }
+    }).then(res => res.json())
+    this.props.showFlights(fetchedFlights)
+  }
 
   handleClick = (selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags) => {
     let newDate = this.props.departDate
@@ -51,26 +60,10 @@ class FlightsContainer extends React.Component {
     this.getFlights(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags, formattedDate)
   }
 
-  getFlights = async (selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags, formattedDate) => {
-   let fetchedFlights = await fetch(`https://apidojo-kayak-v1.p.rapidapi.com/flights/create-session?origin1=${selectedDepart.apicode}&destination1=${selectedArrival.apicode}&departdate1=${formattedDate}&cabin=${cabinSte}&currency=USD&adults=${adultsSte}&bags=${bagsSte}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-RapidAPI-Key": KEY
-      }
-    }).then(res => res.json())
-
-    this.props.showFlights(fetchedFlights)
-
-  }
-
-
-
 
   render(){
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
-    console.log(this.props.flights)
 
-    // const selectedFlights = this.props.flights.map(flt => <FlightGridCell flt={flt} />)
 
     return(
       <div>

@@ -3,28 +3,36 @@ import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class NavBar extends Component {
-  state = {}
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
+  }
+  
   render() {
-    const { activeItem } = this.state
 
     return (
       <Menu size='massive'>
+        {localStorage.getItem('token') ? <Link to='/login'>
+          <Menu.Item
+            name='Login'
+            onClick={this.logout}
+          >
+            Logout
+          </Menu.Item>
+        </Link> :
         <Link to='/login'>
           <Menu.Item
             name='Login'
-            active={activeItem === 'Login'}
             onClick={this.handleItemClick}
           >
             Login
           </Menu.Item>
-        </Link>
+        </Link>}
         <Link to='/home'>
           <Menu.Item
             name='Home'
-            active={activeItem === 'Home'}
             onClick={this.handleItemClick}
           >
             Home
@@ -33,7 +41,6 @@ class NavBar extends Component {
         <Link to='/trips'>
           <Menu.Item
             name='Add Car'
-            active={activeItem === 'My Trips'}
             onClick={this.handleItemClick}
           >
             My Trips

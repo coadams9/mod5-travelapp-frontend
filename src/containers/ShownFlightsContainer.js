@@ -6,13 +6,12 @@ import { connect } from 'react-redux'
 class ShownFlightsContainer extends React.Component {
 
 
-
   render(){
-    const shownFlights = this.props.flights.map(flt => <FlightGridCell flt={flt} />)
+    const shownFlights = this.props.flights.tripset.map((tripset, index) => <FlightGridCell tripset={tripset} key={index} />)
 
     return(
       <div>
-        {shownFlights}
+         {shownFlights}
       </div>
     )
   }
