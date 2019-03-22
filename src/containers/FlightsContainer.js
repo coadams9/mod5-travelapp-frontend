@@ -1,5 +1,4 @@
 import React from 'react'
-// import FlightGridCell from '../components/FlightGridCell'
 import ShownFlightsContainer from './ShownFlightsContainer'
 import { connect } from 'react-redux'
 import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
@@ -68,7 +67,7 @@ class FlightsContainer extends React.Component {
     return(
       <div>
       <Segment id='fltSegment'>
-          <Header as='h3' floated='left'>Departing From: {selectedDepart.smartyDisplay}</Header> <Header as='h3' floated='right'>Arriving At: {selectedArrival.smartyDisplay}</Header>
+          <Header as='h3' floated='left' style={{ color: 'blue' }}>Departing From: {selectedDepart.smartyDisplay}</Header> <Header as='h3' floated='right' style={{ color: 'blue' }}>Arriving At: {selectedArrival.smartyDisplay}</Header>
           <Form id='flightForm'>
               <br />
               <Container id='flightFormInputs'>
@@ -83,7 +82,7 @@ class FlightsContainer extends React.Component {
               </Container>
           </Form>
       </Segment>
-      <Container>
+      <Container id='fltResults'>
          {flights ? <ShownFlightsContainer /> : null}
       </Container>
       </div>

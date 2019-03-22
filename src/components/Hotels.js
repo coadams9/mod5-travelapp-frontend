@@ -1,7 +1,12 @@
 import React from 'react'
-import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
+import { Form, Header, Segment, Container, Button, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
+import { KEY } from '../actions/index'
+import HotelCard from './HotelCard'
+import "react-datepicker/dist/react-datepicker.css"
+
+
 
 const adultOptions = [
   { key: 1, text: '1', value: 1 },
@@ -50,32 +55,63 @@ class Hotels extends React.Component {
     })
   }
 
+  handleClick = (checkIn, checkOut, rooms, adults, ctid) => {
+    let newCheckIn = this.formatDate(checkIn)
+    let newCheckOut = this.formatDate(checkOut)
+    fetch(`https://apidojo-kayak-v1.p.rapidapi.com/hotels/create-session?rooms=${rooms}&citycode=${ctid}&checkin=${newCheckIn}&checkout=${newCheckOut}&adults=${adults}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "X-RapidAPI-Key": KEY
+      },
+    })
+    .then(res => res.json())
+    .then(data => this.props.hotelToStore(data))
+  }
+
+  showHotels = () => this.props.hotels.hotelset.map(htl => <HotelCard htl={htl} key={htl.id} />)
+
 
   render(){
     const { checkIn, checkOut, rooms, adults } = this.state
+    const { ctid, hotels } = this.props
+
+
     return(
-      <Segment id='location-selection'>
-        <Container>
-          <Header as='h1' textAlign='center'>Choose A Hotel</Header>
-          <strong><p id='dateLabel'>Check In Date</p></strong>
-          <DatePicker id='datePicker' selected={checkIn} onChange={(e) => this.setState({ checkIn: e.target.value })} />
-          <strong><p id='dateLabel'>Check Out Date</p></strong>
-          <DatePicker id='datePicker' selected={checkOut} onChange={(e) => this.setState({ checkOut: e.target.value })} />
-          <Form.Group inline>
-            <Form.Select fluid label='Rooms' name='rooms' value={rooms} onChange={(e) => this.setState({ rooms: e.target.value })} options={roomOptions} placeholder='Number of Rooms...' />
-            <Form.Select fluid label='Adults' name='adults' value={adults} onChange={(e) => this.setState({ adults: e.target.value })} options={adultOptions} placeholder='Adults in Room...' />
-            <Button onClick={() => this.handleClick()} id='fltButn' label='Lets Go!!'></Button>
-          </Form.Group>
-        </Container>
-      </Segment>
+      <div>
+        <Segment id='location-selection'>
+          <Container>
+            <Header as='h1' textAlign='center'>Choose A Hotel</Header>
+            <strong><p id='dateLabel'>Check In Date</p></strong>
+            <DatePicker id='datePicker' name='checkIn' selected={checkIn} onChange={(event) => this.setState({ checkIn: event })} />
+            <strong><p id='dateLabel'>Check Out Date</p></strong>
+            <DatePicker id='datePicker' name='checkOut' selected={checkOut} onChange={(event) => this.setState({ checkOut: event })} />
+            <Form.Group inline>
+              <Form.Select fluid label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
+              <Form.Select fluid label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
+              <Button onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)} id='fltButn' label='Find a Hotel'></Button>
+            </Form.Group>
+          </Container>
+        </Segment>
+        <Card.Group itemsPerRow={5}>
+          {hotels ? this.showHotels() : null}
+        </Card.Group>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    ctid: state.hotels.hotelId
+    ctid: state.hotels.hotelId,
+    hotels: state.hotels.hotelData
   }
 }
 
-export default connect(mapStateToProps)(Hotels)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hotelToStore: (data) => dispatch({ type: 'SEARCHED_HOTELS', data })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hotels)

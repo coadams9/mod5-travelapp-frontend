@@ -3,7 +3,8 @@ const initialState = {
   cabin: null,
   adults: null,
   bags: null,
-  flights: false
+  flights: false,
+  selectedFlight: null
 }
 
 
@@ -13,6 +14,9 @@ const flightReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case 'DPT_DATE': {
       return { ...oldState, departDate: action.date}
+    }
+    case 'FLT_TO_STORE': {
+      return { ...oldState, selectedFlight: action.tripset }
     }
     case 'CABIN': {
       return { ...oldState, cabin: action.value }

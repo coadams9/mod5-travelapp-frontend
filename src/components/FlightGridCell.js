@@ -6,12 +6,9 @@ import { Link } from 'react-router-dom'
 
 
 
-
-
-
 const FlightGridCell = (props) => {
 
-  const { tripset } = props
+  const { tripset, flightToStore } = props
   return(
     <Grid>
       <Grid.Column width={4}>
@@ -24,7 +21,7 @@ const FlightGridCell = (props) => {
         <p>Origin Airport: {tripset.flightRoutes[0].originAirport} Destination Airport: {tripset.flightRoutes[0].destinationAirport}</p>
       </Grid.Column>
       <Grid.Column width={2}>
-        {localStorage.getItem('token') ? <Link to='/hotels'><Button>Book Flight!</Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
+        {localStorage.getItem('token') ? <Link to='/hotels'><Button onClick={() => flightToStore(tripset)}>Book Flight!</Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
       </Grid.Column>
     </Grid>
   )
@@ -36,5 +33,11 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    flightToStore: (tripset) => dispatch({ type: 'FLT_TO_STORE', tripset })
+  }
+}
 
-export default connect(mapStateToProps)(FlightGridCell)
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlightGridCell)

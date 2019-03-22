@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class NavBar extends Component {
@@ -9,7 +9,7 @@ class NavBar extends Component {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
   }
-  
+
   render() {
 
     return (
@@ -46,6 +46,7 @@ class NavBar extends Component {
             My Trips
           </Menu.Item>
         </Link>
+        <Menu.Item position='right'><Header style={{ color: 'lightBlue'}}>Pack Your Bags</Header></Menu.Item>
       </Menu>
     )
   }

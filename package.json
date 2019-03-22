@@ -12,12 +12,15 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "semantic-ui": "^2.4.2",
-    "semantic-ui-react": "^0.86.0"
+    "semantic-ui-react": "^0.86.0",
+    "typescript": "^3.3.4000"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build-semantic": "cd src/semantic && gulp build-css build-assets",
+    "watch-semantic": "cd src/semantic && npm run build-semantic && gulp watch",
+    "start": "npm run build-semantic && react-scripts start",
+    "build": "npm run build-semantic && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

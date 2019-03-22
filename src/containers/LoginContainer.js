@@ -10,9 +10,9 @@ class LoginContainer extends React.Component {
 
   render(){
     return(
-      <div>
-        <Link to='/login'><Button>Login</Button></Link>
-        <Link to='/signUp'><Button>SignUp</Button></Link>
+      <div id='loginContainer'>
+        <Link to='/login'><Button id='loginButt'>Login</Button></Link>
+        <Link to='/signUp'><Button id='signupButt'>SignUp</Button></Link>
       </div>
     )
   }
