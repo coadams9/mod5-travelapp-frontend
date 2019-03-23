@@ -34,7 +34,7 @@ class LocationSelection extends React.Component {
       {slctdArv && slctdDep !== false ? <Link to='/flights'><Button onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
         <Grid columns={2} relaxed='very'>
           <Grid.Column>
-          <Header as='h1' textAlign='center' color='blue'>Leaving From...</Header>
+          <Header id="leavingFromHead" as='h1'>Leaving From...</Header>
           <Search aligned='left'
                   placeholder='Depart From...'
                   onSearchChange={this.handleSearchChange1}
@@ -45,7 +45,7 @@ class LocationSelection extends React.Component {
                   </div>
           </Grid.Column>
           <Grid.Column>
-          <Header as='h1' textAlign='center' color='blue'>Arriving At...</Header>
+          <Header id="arrivingAtHead" as='h1'>Arriving At...</Header>
           <Search aligned='right'
                   placeholder='Arrive At...'
                   onSearchChange={this.handleSearchChange2}

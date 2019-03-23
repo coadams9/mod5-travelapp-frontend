@@ -65,15 +65,17 @@ class FlightsContainer extends React.Component {
 
 
     return(
-      <div>
+      <div id='flightContainer'>
       <Segment id='fltSegment'>
-          <Header as='h3' floated='left' style={{ color: 'blue' }}>Departing From: {selectedDepart.smartyDisplay}</Header> <Header as='h3' floated='right' style={{ color: 'blue' }}>Arriving At: {selectedArrival.smartyDisplay}</Header>
+          <Header as='h3' id='departHead'>Departing From: {selectedDepart.smartyDisplay}</Header> <Header id='arriveHead' as='h3'>Arriving At: {selectedArrival.smartyDisplay}</Header>
           <Form id='flightForm'>
               <br />
               <Container id='flightFormInputs'>
-                <strong><p id='dateLabel'>Departure Date</p></strong>
-                <DatePicker id='datePicker' selected={departDate} onChange={getDepartDate} />
                 <Form.Group inline>
+                  <div id='damn'>
+                    <strong><p>Departure Date</p></strong>
+                    <DatePicker selected={departDate} onChange={getDepartDate} />
+                  </div>
                   <Form.Select fluid label='Adults' onChange={(e, { value }) => adults(value)} options={adultOptions} placeholder='Adults on Flight' />
                   <Form.Select fluid label='Cabin' onChange={(e, { value }) => cabin(value)} options={options} placeholder='Cabin Preference' />
                   <Form.Select fluid label='Bags' onChange={(e, { value }) => bags(value)} options={bagOptions} placeholder='Number of Bags' />
