@@ -2,6 +2,85 @@ body {
   background: url("https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2018/07/05/105312566-1530803740357gettyimages-815863456.1910x1000.jpeg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  /* animation-name: background-switch; */
+  animation-duration: 500s;
+  animation-iteration-count: infinite;
+}
+
+/*  A gif idea for maybe the login page because this shit gets annoying! https://media.giphy.com/media/Te7h0uqGNo0CY/giphy.gif */
+
+@keyframes background-switch {
+  0%  { background: url("./images/Experiences_Beach.jpg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+        animation-play-state: paused;
+      }
+  15% { background: url("./images/carnival-cruise-line.jpg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+        animation-play-state: paused;
+      }
+  30% { background: url("./images/flightpic.jpeg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+      }
+  45% { background: url("./images/jurrassicpark.jpeg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+      }
+  60% { background: url("./images/london.jpg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+      }
+  75% { background: url("./images/phuket-romantic-beaches.jpg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+  100% { background: url("./images/lights.jpeg") no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        animation-timing-function: linear;
+      }
+}
+
+
+
+#fltButn {
+  margin-top: 20px;
+  margin-right: 3px
+}
+
+.inputs {
+  margin-bottom: 1em;
+}
+
+#select {
+  margin: 0px;
+}
+
+#hotelForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+#hotelHead {
+  align-self: center;
+  color: gold;
+}
+
+#hotelSelection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: url('https://www.atlantisbahamas.com/media/Things%20To%20Do/Water%20Park/Beaches/Hero/Experiences_Beach.jpg');
+  background-size: cover;
 }
 
 #arriveHead {
@@ -85,10 +164,14 @@ body {
   display: inherit;
 }
 
-#fltButn {
-  margin-top: 19px;
+#hotelButn {
+  position: relative;
+  margin-top: 7px;
   background-color: white;
+  align-self: inherit;
+  margin-left: 3px;
 }
+
 
 #arrivals, #departs, #fltResults {
   height: 80vh;
@@ -108,6 +191,12 @@ body {
 #fltResults {
   background-color: inherit;
 }
+
+/* div#hotelSelection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+} */
 
 #dateLabel {
   display: flex;

@@ -7,21 +7,22 @@ import { Link } from 'react-router-dom'
 
 
 const FlightGridCell = (props) => {
+  const { segset, flightToStore, flights } = props
 
-  const { tripset, flightToStore } = props
   return(
     <Grid celled='internally'>
       <Grid.Column width={4} color='teal'>
         <Image src='http://graphicloads.com/wp-content/uploads/2015/09/Airline-Logos.jpg' />
       </Grid.Column>
       <Grid.Column color='teal' width={9}>
-        <p>Price: {tripset.displayLow}</p>
-        <p>Cabin: {tripset.cabinClass}</p>
-        <p>Duration: {tripset.duration}</p>
-        <p>Origin Airport: {tripset.flightRoutes[0].originAirport} Destination Airport: {tripset.flightRoutes[0].destinationAirport}</p>
+        <p>Depart Date: {flights.departDate}</p>
+        <p>Departure Time: {segset.leaveTimeDisplay}</p>
+        <p>Arrival Time: {segset.arriveTimeDisplay}</p>
+        <p>Cabin: {segset.cabin}</p>
+        <p>Duration: {segset.duration} mins</p>
       </Grid.Column>
       <Grid.Column color='teal' width={2}>
-        {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={() => flightToStore(tripset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
+        {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={() => flightToStore(segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
       </Grid.Column>
     </Grid>
   )
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    flightToStore: (tripset) => dispatch({ type: 'FLT_TO_STORE', tripset })
+    flightToStore: (segset) => dispatch({ type: 'FLT_TO_STORE', segset })
   }
 }
 

@@ -7,7 +7,9 @@ class ShownFlightsContainer extends React.Component {
 
 
   render(){
-    const shownFlights = this.props.flights.tripset.map((tripset, index) => <FlightGridCell tripset={tripset} key={index} />)
+    const segsetData = this.props.flights.segset
+    const flightsArray = Object.values(segsetData)
+    const shownFlights = flightsArray.map(flt => <FlightGridCell segset={flt} />)
 
     return(
       <div>

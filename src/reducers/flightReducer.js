@@ -4,7 +4,8 @@ const initialState = {
   adults: null,
   bags: null,
   flights: false,
-  selectedFlight: null
+  selectedFlight: null,
+  flightPrice: null
 }
 
 
@@ -16,7 +17,7 @@ const flightReducer = (oldState = initialState, action) => {
       return { ...oldState, departDate: action.date}
     }
     case 'FLT_TO_STORE': {
-      return { ...oldState, selectedFlight: action.tripset }
+      return { ...oldState, selectedFlight: action.segset }
     }
     case 'CABIN': {
       return { ...oldState, cabin: action.value }

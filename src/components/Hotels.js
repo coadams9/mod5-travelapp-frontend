@@ -79,19 +79,21 @@ class Hotels extends React.Component {
 
     return(
       <div>
-        <Segment id='location-selection'>
-          <Container>
-            <Header as='h1' textAlign='center'>Choose A Hotel</Header>
-            <strong><p id='dateLabel'>Check In Date</p></strong>
-            <DatePicker id='datePicker' name='checkIn' selected={checkIn} onChange={(event) => this.setState({ checkIn: event })} />
-            <strong><p id='dateLabel'>Check Out Date</p></strong>
-            <DatePicker id='datePicker' name='checkOut' selected={checkOut} onChange={(event) => this.setState({ checkOut: event })} />
-            <Form.Group inline>
-              <Form.Select fluid label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
-              <Form.Select fluid label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
-              <Button onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)} id='fltButn' label='Find a Hotel'></Button>
-            </Form.Group>
-          </Container>
+        <Segment id='hotelSelection'>
+            <h1 id='hotelHead'>Choose A Hotel</h1>
+              <Form id='hotelForm'>
+                <div class='inputs'>
+                  <strong><p>Check In Date</p></strong>
+                  <DatePicker name='checkIn' selected={checkIn} onChange={(event) => this.setState({ checkIn: event })} />
+                </div>
+                <div class='inputs'>
+                  <strong><p>Check Out Date</p></strong>
+                  <DatePicker name='checkOut' selected={checkOut} onChange={(event) => this.setState({ checkOut: event })} />
+                </div>
+                <Form.Select id='select' label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
+                <Form.Select id='select' label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
+                <Button id='hotelButn' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)} label='Find a Hotel'></Button>
+              </Form>
         </Segment>
         <Card.Group itemsPerRow={5}>
           {hotels ? this.showHotels() : null}
