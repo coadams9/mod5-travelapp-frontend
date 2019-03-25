@@ -15,21 +15,29 @@ class Trips extends React.Component {
       },
       method: 'POST',
       body: JSON.stringify({
-        hotelinfo: hotel,
-        flightinfo: flight,
-        arv: arv,
-        dpt: dpt,
-        fltPrc: fltPrc
+        leavingat: flight.leaveTimeDisplay,
+        arrivingat: flight.arriveTimeDisplay,
+        arvdisplay: arv.displayname,
+        dptdisplay: dpt.displayname,
+        fltPrc: fltPrc,
+        hotelname: hotel.name,
+        hotelprice: hotel.price,
+        hotelphone: hotel.phone,
+        hoteladdress: hotel.displayaddress
       })
     })
   }
+
+  // componentDidMount(){
+  //   let username = localStorage.username
+  //   fetch(`http://localhost:3001/trips/${username}`)
+  // }
 
 
   render(){
 
     const { hotel, flight, arv, dpt, fltPrc } = this.props
     this.saveTrip(hotel, flight, arv, dpt, fltPrc)
-    console.log(this.props)
     return(
       <div>
       <Table celled padded>
