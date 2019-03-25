@@ -6,26 +6,86 @@ import { Link } from 'react-router-dom'
 
 
 
-const FlightGridCell = (props) => {
-  const { segset, flightToStore, flights } = props
+const fPrices = [
+  { key: 1, text: '$386', value: 1 },
+  { key: 2, text: '$350', value: 2 },
+  { key: 3, text: '$384', value: 3 },
+  { key: 4, text: '$450', value: 4 },
+  { key: 5, text: '$414', value: 5 },
+  { key: 6, text: '$375', value: 6 },
+  { key: 7, text: '$389', value: 7 },
+  { key: 8, text: '$500', value: 8 },
+  { key: 9, text: '$456', value: 9 },
+  { key: 10, text: '$421', value: 10 },
+  { key: 11, text: '$351', value: 11 },
+  { key: 12, text: '$376', value: 12 },
+  { key: 13, text: '$421', value: 13 },
+  { key: 14, text: '$435', value: 14 }
+]
 
-  return(
-    <Grid celled='internally'>
-      <Grid.Column width={4} color='teal'>
-        <Image src='http://graphicloads.com/wp-content/uploads/2015/09/Airline-Logos.jpg' />
-      </Grid.Column>
-      <Grid.Column color='teal' width={9}>
-        <p>Depart Date: {flights.departDate}</p>
-        <p>Departure Time: {segset.leaveTimeDisplay}</p>
-        <p>Arrival Time: {segset.arriveTimeDisplay}</p>
-        <p>Cabin: {segset.cabin}</p>
-        <p>Duration: {segset.duration} mins</p>
-      </Grid.Column>
-      <Grid.Column color='teal' width={2}>
-        {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={() => flightToStore(segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
-      </Grid.Column>
-    </Grid>
-  )
+
+
+
+const cPrices = [
+  { key: 1, text: '$250', value: 1 },
+  { key: 2, text: '$275', value: 2 },
+  { key: 3, text: '$192', value: 3 },
+  { key: 4, text: '$185', value: 4 },
+  { key: 5, text: '$160', value: 5 },
+  { key: 6, text: '$275', value: 6 },
+  { key: 7, text: '$280', value: 7 },
+  { key: 8, text: '$260', value: 8 },
+  { key: 9, text: '$250', value: 9 },
+  { key: 10, text: '$199', value: 10 },
+  { key: 11, text: '$188', value: 11 },
+  { key: 12, text: '$101', value: 12 },
+  { key: 13, text: '$112', value: 13 },
+  { key: 14, text: '$279', value: 14 }
+]
+
+
+
+Array.prototype.sample = function(){
+  return this[Math.floor(Math.random()*this.length)];
+}
+
+class FlightGridCell extends React.Component {
+
+  handleClick = (price, segset) => {
+    this.props.flightToStore(segset)
+    this.props.flightPriceToStore(price)
+  }
+
+  render(){
+
+    const { segset, flightToStore, flights } = this.props
+    let price;
+
+    if (segset.cabin == 'first'){
+      price = fPrices.sample().text
+    } else {
+      price = cPrices.sample().text
+    }
+
+    return(
+      <Grid celled='internally'>
+        <Grid.Column width={4} color='teal'>
+          <Image src='http://graphicloads.com/wp-content/uploads/2015/09/Airline-Logos.jpg' />
+        </Grid.Column>
+        <Grid.Column color='teal' width={9}>
+          <p>Price: {price}</p>
+          <p>Depart Date: {flights.departDate}</p>
+          <p>Departure Time: {segset.leaveTimeDisplay}</p>
+          <p>Arrival Time: {segset.arriveTimeDisplay}</p>
+          <p>Cabin: {segset.cabin}</p>
+          <p>Duration: {segset.duration} mins</p>
+        </Grid.Column>
+        <Grid.Column color='teal' width={2}>
+          {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={(e) => this.handleClick(price, segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
+        </Grid.Column>
+      </Grid>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -36,7 +96,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    flightToStore: (segset) => dispatch({ type: 'FLT_TO_STORE', segset })
+    flightToStore: (segset) => dispatch({ type: 'FLT_TO_STORE', segset }),
+    flightPriceToStore: (price) => dispatch({ type: 'FLT_PRICE_TO_STORE', price })
   }
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import { getAuthToken } from '../services/backend'
 import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
   state = {
@@ -39,7 +40,10 @@ class Login extends React.Component {
             <input type='password' id='inputtext' style={{ textAlign: 'center'}} name='password' placeholder='password' value={password}
               onChange={(e) => this.setState({ password: e.target.value })} />
           </Form.Field>
-          <Button type='submit'>Login</Button>
+          <div>
+            <Button type='submit'>Login</Button>
+            <Button as={ Link } to='/signUp'>SignUp</Button>
+          </div>
         </Form>
       </div>
     )

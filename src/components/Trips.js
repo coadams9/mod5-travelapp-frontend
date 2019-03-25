@@ -7,7 +7,7 @@ import { KEY } from '../actions/index'
 
 class Trips extends React.Component {
 
-  saveTrip = (hotel, flight, arv, dpt) => {
+  saveTrip = (hotel, flight, arv, dpt, fltPrc) => {
     fetch('http://localhost:3000/trips', {
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,8 @@ class Trips extends React.Component {
         hotelinfo: hotel,
         flightinfo: flight,
         arv: arv,
-        dpt: dpt
+        dpt: dpt,
+        fltPrc: fltPrc
       })
     })
   }
@@ -26,15 +27,15 @@ class Trips extends React.Component {
 
   render(){
 
-    const { hotel, flight, arv, dpt } = this.props
-    this.saveTrip(hotel, flight, arv, dpt)
+    const { hotel, flight, arv, dpt, fltPrc } = this.props
+    this.saveTrip(hotel, flight, arv, dpt, fltPrc)
     console.log(this.props)
     return(
       <div>
       <Table celled padded>
          <Table.Header>
            <Table.Row>
-             <Table.HeaderCell singleLine>{localStorage.username}'s Trips</Table.HeaderCell>
+             <Table.HeaderCell singleLine>{localStorage.username}s Trips</Table.HeaderCell>
              <Table.HeaderCell>Flight Details</Table.HeaderCell>
              <Table.HeaderCell>Hotel Details</Table.HeaderCell>
              <Table.HeaderCell>Notes</Table.HeaderCell>
@@ -80,7 +81,8 @@ const mapStateToProps = (state) => {
     hotel: state.hotels.selectedHotel,
     flight: state.flight.selectedFlight,
     arv: state.search.selectedArrival,
-    dpt: state.search.selectedDepart
+    dpt: state.search.selectedDepart,
+    fltPrc: state.flight.flightPrice
   }
 }
 

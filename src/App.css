@@ -5,48 +5,55 @@ body {
   /* animation-name: background-switch; */
   animation-duration: 500s;
   animation-iteration-count: infinite;
+  transition-timing-function: cubic-bezier(1.0, 1.0, 1.0, 1.0);
 }
 
 /*  A gif idea for maybe the login page because this shit gets annoying! https://media.giphy.com/media/Te7h0uqGNo0CY/giphy.gif */
 
 @keyframes background-switch {
   0%  { background: url("./images/Experiences_Beach.jpg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
-        animation-play-state: paused;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box;
       }
   15% { background: url("./images/carnival-cruise-line.jpg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
-        animation-play-state: paused;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box;
       }
   30% { background: url("./images/flightpic.jpeg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box
       }
   45% { background: url("./images/jurrassicpark.jpeg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box
       }
   60% { background: url("./images/london.jpg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box
       }
   75% { background: url("./images/phuket-romantic-beaches.jpg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        background-clip: border-box
       }
   100% { background: url("./images/lights.jpeg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        animation-timing-function: linear;
+        background-size: 100% 100%;
+        /* background-attachment: fixed; */
+        /* animation-timing-function: linear; */
+        background-clip: border-box
       }
 }
+
 
 
 
@@ -79,7 +86,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background: url('https://www.atlantisbahamas.com/media/Things%20To%20Do/Water%20Park/Beaches/Hero/Experiences_Beach.jpg');
+  background: inherit;
   background-size: cover;
 }
 
@@ -207,7 +214,9 @@ body {
 #form-container {
   justify-content: center;
   align-items: center;
-  height: 61em
+  height: 64em;
+  display: flex;
+  flex-direction: column;
 }
 
 #flightForm {
@@ -219,16 +228,13 @@ body {
   max-width: 50%;
 }
 
-/* .ui.form {
-  opacity: 0.9;
-  background-color: lightblue;
-  width: 50em;
-  border: inset;
-  padding: 20px;
-  text-align: center;
-  margin-left: 40em;
-  background-color: unset;
-} */
+.ui.form {
+    font-size: 1rem;
+    background-color: deepskyblue;
+    padding-left: 6em;
+    padding-right: 6em;
+    border-color: #488686;
+}
 
 #signupContainer {
   height: 65em;

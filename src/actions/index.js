@@ -1,5 +1,7 @@
 export const KEY = '76182e7747msh53b229618ef96d3p13ca06jsn4d7563f38f2c'
 
+
+
 export function searchTerm1(value) {
   return dispatch => {
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/locations/search?where=/${value}`, {
@@ -77,5 +79,11 @@ export function bags(value) {
 export function showFlights(data){
   return dispatch => {
     dispatch({ type: 'ADD_FLIGHTS', data })
+  }
+}
+
+export function flightPrice(price){
+  return dispatch => {
+    dispatch({ type: 'FLT_PRICE_TO_STORE', price })
   }
 }

@@ -11,8 +11,13 @@ const initialState = {
 
 
 
+
+
 const flightReducer = (oldState = initialState, action) => {
   switch (action.type) {
+    case 'FLT_PRICE_TO_STORE': {
+      return { ...oldState, flightPrice: action.price}
+    }
     case 'DPT_DATE': {
       return { ...oldState, departDate: action.date}
     }
