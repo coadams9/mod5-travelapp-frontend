@@ -5,7 +5,8 @@ const initialState = {
   bags: null,
   flights: false,
   selectedFlight: null,
-  flightPrice: null
+  flightPrice: null,
+  tripInfo: null
 }
 
 
@@ -15,6 +16,9 @@ const initialState = {
 
 const flightReducer = (oldState = initialState, action) => {
   switch (action.type) {
+    case 'TRIP_INFO': {
+      return { ...oldState, tripInfo: action.data}
+    }
     case 'FLT_PRICE_TO_STORE': {
       return { ...oldState, flightPrice: action.price}
     }

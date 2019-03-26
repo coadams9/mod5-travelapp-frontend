@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
 import { KEY } from '../actions/index'
+import TripInfo from './TripInfo'
+
 
 
 
@@ -28,16 +30,25 @@ class Trips extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   let username = localStorage.username
-  //   fetch(`http://localhost:3001/trips/${username}`)
-  // }
+
+  tripInfo = () => {
+    let userId = localStorage.userId
+    fetch(`http://localhost:3000/trips/${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(res => res.json())
+    .then(data => data.trips.map(trp => <TripInfo trp={trp} key={trp.id} />))
+  }
 
 
   render(){
-
     const { hotel, flight, arv, dpt, fltPrc } = this.props
     this.saveTrip(hotel, flight, arv, dpt, fltPrc)
+
+
+
     return(
       <div>
       <Table celled padded>
@@ -49,40 +60,14 @@ class Trips extends React.Component {
              <Table.HeaderCell>Notes</Table.HeaderCell>
            </Table.Row>
          </Table.Header>
-
-         <Table.Body>
-           <Table.Row>
-             <Table.Cell>
-               <Button animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>UnPack Your Bags</Button.Content></Button>
-             </Table.Cell>
-             <Table.Cell>
-              Price:
-              <br />
-              Leaving at:
-              <br />
-              Arriving at:
-              <br />
-              AirPort:
-              <br />
-              Number:
-             </Table.Cell>
-             <Table.Cell>
-               Hotel Name:
-               <br />
-               Hotel Price:
-               <br />
-               Number:
-             </Table.Cell>
-             <Table.Cell>
-               put a box here that saves there shit.
-             </Table.Cell>
-           </Table.Row>
-         </Table.Body>
-        </Table>
+         {this.tripInfo()}
+      </Table>
       </div>
     )
   }
 }
+
+
 
 const mapStateToProps = (state) => {
   return {

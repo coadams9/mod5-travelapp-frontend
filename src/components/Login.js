@@ -15,6 +15,7 @@ class Login extends React.Component {
     getAuthToken(this.state).then(payload => {
     localStorage.setItem('token', payload.token)
     localStorage.setItem('username', payload.user)
+    localStorage.setItem('userId', payload.userId)
       if (localStorage.getItem('token') && localStorage.getItem('username') !== 'undefined'){
         this.props.history.push("/home")
       } else {
