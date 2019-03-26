@@ -6,39 +6,45 @@ import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
 
 class TripInfo extends React.Component {
 
+  deleteTrip = (event, trp) => {
+    debugger
+    event.target.parentElement.parentElement.parentElement.remove()
+    fetch(`http://localhost:3000/trips/${trp.id}`, {
+      method: 'DELETE'
+    })
+  }
 
 
   render(){
     const { trp } = this.props
-
-    debugger
+    console.log(trp)
 
     return(
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-            <Button animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>UnPack Your Bags</Button.Content></Button>
-          </Table.Cell>
-          <Table.Cell>
-           Price:
-           <br />
-           Leaving at:
-           <br />
-           Arriving at:
-           <br />
-           AirPort:
-           <br />
-           Number:
-          </Table.Cell>
-          <Table.Cell>
-            Hotel Name:
+            Leaving From: {trp.dptdisplay}
             <br />
-            Hotel Price:
-            <br />
-            Number:
+            Arriving At: {trp.arvdisplay}
           </Table.Cell>
           <Table.Cell>
-            put a box here that saves there shit.
+           Price: {trp.fltPrc}
+           <br />
+           Leaving at: {trp.leavingat}
+           <br />
+           Arriving at: {trp.arrivingat}
+          </Table.Cell>
+          <Table.Cell>
+            Hotel Name: {trp.hotelname}
+            <br />
+            Hotel Price: {trp.hotelprice}
+            <br />
+            Number: {trp.hotelphone}
+            <br />
+            Address: {trp.hoteladdress}
+          </Table.Cell>
+          <Table.Cell>
+            <Button onClick={(event) => this.deleteTrip(event, trp)} animated='fade'><Button.Content visible>Delete Trip</Button.Content><Button.Content hidden>UnPack Your Bags</Button.Content></Button>
           </Table.Cell>
         </Table.Row>
       </Table.Body>

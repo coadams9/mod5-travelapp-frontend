@@ -13,7 +13,7 @@ class NavBar extends Component {
   render() {
 
     return (
-      <Menu id='navBar' size='massive'>
+      <Menu size='massive' color='yellow'>
         {localStorage.getItem('token') ? <Link to='/login'>
           <Menu.Item
             name='Login'

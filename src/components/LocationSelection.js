@@ -31,7 +31,7 @@ class LocationSelection extends React.Component {
 
     return(
       <Segment id='location-selection'>
-      {slctdArv && slctdDep !== false ? <Link to='/flights'><Button onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
+      {slctdArv && slctdDep !== false ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
         <Grid columns={2} relaxed='very'>
           <Grid.Column>
           <Header id="leavingFromHead" as='h1'>Leaving From...</Header>
@@ -57,7 +57,7 @@ class LocationSelection extends React.Component {
           </Grid.Column>
         </Grid>
         <Divider vertical></Divider>
-        {slctdArv && slctdDep !== null ? <Link to='/flights'><Button onClick={() => getHotelId(slctdArv.ctid)} attached='bottom' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
+        {slctdArv && slctdDep !== null ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='bottom' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
       </Segment>
     )
   }

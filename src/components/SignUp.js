@@ -41,26 +41,27 @@ class SignUp extends React.Component {
     const { username, password, password_confirm } = this.state
     return(
       <div>
-      <div id='signupContainer'>
-        <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-          <label>Username</label>
-          <input name='username' placeholder='Enter Username...' value={username}
-            onChange={(e) => this.setState({ username: e.target.value })} />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input name='password' placeholder='Enter Password...' value={password}
-            onChange={(e) => this.setState({ password: e.target.value })} />
-        </Form.Field>
-        <Form.Field>
-          <label>Password Confirmation</label>
-          <input name='password_confirm' value={password_confirm} placeholder='Enter Password....Again..yea...again'
-            onChange={(e) => this.setState({ password_confirm: e.target.value })} />
-        </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
-      </div>
+        <div id='signupContainer'>
+            <div id='signuptitle'>Pack Your Bags</div>
+          <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <label>Username</label>
+            <input name='username' placeholder='Enter Username...' value={username}
+              onChange={(e) => this.setState({ username: e.target.value })} />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input name='password' placeholder='Enter Password...' value={password}
+              onChange={(e) => this.setState({ password: e.target.value })} />
+          </Form.Field>
+          <Form.Field>
+            <label>Password Confirmation</label>
+            <input name='password_confirm' value={password_confirm} placeholder='Enter Password....Again..yea...again'
+              onChange={(e) => this.setState({ password_confirm: e.target.value })} />
+          </Form.Field>
+            <Button type='submit'>Submit</Button>
+          </Form>
+        </div>
       </div>
     )
   }

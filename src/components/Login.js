@@ -30,6 +30,9 @@ class Login extends React.Component {
     const { username, password } = this.state
     return(
       <div id='form-container'>
+        <div id='titleContainer'>
+          <div id='title'>Pack Your Bags</div>
+        </div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label id='labels'>Username</label>

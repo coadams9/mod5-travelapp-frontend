@@ -6,7 +6,7 @@ const initialState = {
   flights: false,
   selectedFlight: null,
   flightPrice: null,
-  tripInfo: null
+  tripInfo: false
 }
 
 

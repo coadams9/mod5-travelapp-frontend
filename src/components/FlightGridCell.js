@@ -60,6 +60,9 @@ class FlightGridCell extends React.Component {
 
     const { segset, flightToStore, flights } = this.props
     let price;
+    console.log(flights)
+
+
 
     if (segset.cabin == 'first'){
       price = fPrices.sample().text
@@ -67,9 +70,11 @@ class FlightGridCell extends React.Component {
       price = cPrices.sample().text
     }
 
+    debugger
+
     return(
       <Grid celled='internally'>
-        <Grid.Column width={4} color='teal'>
+        <Grid.Column stretched={true} width={4} color='teal'>
           <Image src='http://graphicloads.com/wp-content/uploads/2015/09/Airline-Logos.jpg' />
         </Grid.Column>
         <Grid.Column color='teal' width={9}>
@@ -80,7 +85,7 @@ class FlightGridCell extends React.Component {
           <p>Cabin: {segset.cabin}</p>
           <p>Duration: {segset.duration} mins</p>
         </Grid.Column>
-        <Grid.Column color='teal' width={2}>
+        <Grid.Column stretched={true} color='teal' width={2}>
           {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={(e) => this.handleClick(price, segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
         </Grid.Column>
       </Grid>

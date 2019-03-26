@@ -87,3 +87,9 @@ export function flightPrice(price){
     dispatch({ type: 'FLT_PRICE_TO_STORE', price })
   }
 }
+
+export function tripInfoToStore(data){
+  return dispatch => {
+    dispatch({ type: 'TRIP_INFO', data })
+  }
+}

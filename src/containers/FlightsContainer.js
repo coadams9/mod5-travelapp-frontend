@@ -72,14 +72,14 @@ class FlightsContainer extends React.Component {
               <br />
               <Container id='flightFormInputs'>
                 <Form.Group inline>
-                  <div id='damn'>
+                  <div id='flightlabel'>
                     <strong><p>Departure Date</p></strong>
                     <DatePicker selected={departDate} onChange={getDepartDate} />
                   </div>
                   <Form.Select fluid label='Adults' onChange={(e, { value }) => adults(value)} options={adultOptions} placeholder='Adults on Flight' />
                   <Form.Select fluid label='Cabin' onChange={(e, { value }) => cabin(value)} options={options} placeholder='Cabin Preference' />
                   <Form.Select fluid label='Bags' onChange={(e, { value }) => bags(value)} options={bagOptions} placeholder='Number of Bags' />
-                  <Button onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn' label='Lets Go!!'></Button>
+                  <Button color='yellow' onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn'>Lets Go!!</Button>
                 </Form.Group>
               </Container>
           </Form>

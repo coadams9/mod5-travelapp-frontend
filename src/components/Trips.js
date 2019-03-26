@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
-import { KEY } from '../actions/index'
-import TripInfo from './TripInfo'
-
-
+import { KEY, tripInfoToStore } from '../actions/index'
+import TableHead from './TableHead'
 
 
 class Trips extends React.Component {
@@ -30,7 +28,6 @@ class Trips extends React.Component {
     })
   }
 
-
   tripInfo = () => {
     let userId = localStorage.userId
     fetch(`http://localhost:3000/trips/${userId}`, {
@@ -39,8 +36,13 @@ class Trips extends React.Component {
         'Content-Type': 'application/json'
       },
     }).then(res => res.json())
-    .then(data => data.trips.map(trp => <TripInfo trp={trp} key={trp.id} />))
+    .then(data => this.props.tripInfoToStore(data))
   }
+
+  componentDidMount(){
+    this.tripInfo()
+  }
+
 
 
   render(){
@@ -48,20 +50,9 @@ class Trips extends React.Component {
     this.saveTrip(hotel, flight, arv, dpt, fltPrc)
 
 
-
     return(
-      <div>
-      <Table celled padded>
-         <Table.Header>
-           <Table.Row>
-             <Table.HeaderCell singleLine>{localStorage.username}s Trips</Table.HeaderCell>
-             <Table.HeaderCell>Flight Details</Table.HeaderCell>
-             <Table.HeaderCell>Hotel Details</Table.HeaderCell>
-             <Table.HeaderCell>Notes</Table.HeaderCell>
-           </Table.Row>
-         </Table.Header>
-         {this.tripInfo()}
-      </Table>
+      <div id='table'>
+        <TableHead />
       </div>
     )
   }
@@ -79,4 +70,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Trips)
+export default connect(mapStateToProps, { tripInfoToStore })(Trips)
