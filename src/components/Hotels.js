@@ -92,7 +92,7 @@ class Hotels extends React.Component {
                 </div>
                 <Form.Select id='select' label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
                 <Form.Select id='select' label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
-                <Button id='hotelButn' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)} label='Find a Hotel'></Button>
+                <Button id='hotelButn' color='yellow' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)}>Find Hotels</Button>
               </Form>
         </Segment>
         <Card.Group itemsPerRow={5}>

@@ -14,7 +14,7 @@ class HotelCard extends React.Component {
       <Card>
          <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEzLvjmEJvrGketgZ0tcNMivuUzGozWB7cFu2NK14blmNjzrh_FA' />
         <Card.Content>
-          <Card.Header color='red'>{htl.name}</Card.Header>
+          <Card.Header>{htl.name}</Card.Header>
         </Card.Content>
         <Card.Content>
           <Card.Description>Price: {htl.price}</Card.Description>
@@ -26,7 +26,7 @@ class HotelCard extends React.Component {
         <Card.Content extra>
           <Icon name='star'>{htl.stars} Stars</Icon>
           <div className='ui two buttons'>
-            <Button as={ Link } to='/trips' basic color='green' onClick={() => hotelToStore(htl)}>Book Hotel</Button>
+            <Button as={ Link } to='/trips' basic color='yellow' onClick={() => hotelToStore(htl)}>Book Hotel</Button>
           </div>
         </Card.Content>
       </Card>

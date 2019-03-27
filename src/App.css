@@ -35,6 +35,18 @@ div#table {
   margin-right: 1%;
 }
 
+div#flightInfo {
+  color: #001fff;
+  font-weight: 900;
+}
+
+.ui[class*="internally celled"].grid {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.52);
+}
+
 @keyframes background-switch {
   0%  { background: url("./images/Experiences_Beach.jpg") no-repeat;
         background-size: 100% 100%;
@@ -89,6 +101,7 @@ div#table {
 
 .inputs {
   margin-bottom: 1em;
+  color: gold
 }
 
 #select {
@@ -214,7 +227,7 @@ div#table {
 #hotelButn {
   position: relative;
   margin-top: 7px;
-  background-color: white;
+  background-color: gold;
   align-self: inherit;
   margin-left: 3px;
 }

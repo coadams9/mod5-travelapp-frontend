@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { flightPics } from '../actions/index'
 
 
 
@@ -45,6 +46,8 @@ const cPrices = [
 
 
 
+
+
 Array.prototype.sample = function(){
   return this[Math.floor(Math.random()*this.length)];
 }
@@ -62,22 +65,18 @@ class FlightGridCell extends React.Component {
     let price;
     console.log(flights)
 
-
-
     if (segset.cabin == 'first'){
       price = fPrices.sample().text
     } else {
       price = cPrices.sample().text
     }
 
-    debugger
-
     return(
       <Grid celled='internally'>
-        <Grid.Column stretched={true} width={4} color='teal'>
-          <Image src='http://graphicloads.com/wp-content/uploads/2015/09/Airline-Logos.jpg' />
+        <Grid.Column stretched={true} width={4}>
+          <Image src={flightPics.sample()} />
         </Grid.Column>
-        <Grid.Column color='teal' width={9}>
+        <Grid.Column id='flightInfo' width={9}>
           <p>Price: {price}</p>
           <p>Depart Date: {flights.departDate}</p>
           <p>Departure Time: {segset.leaveTimeDisplay}</p>
@@ -85,7 +84,7 @@ class FlightGridCell extends React.Component {
           <p>Cabin: {segset.cabin}</p>
           <p>Duration: {segset.duration} mins</p>
         </Grid.Column>
-        <Grid.Column stretched={true} color='teal' width={2}>
+        <Grid.Column stretched={true} width={2}>
           {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={(e) => this.handleClick(price, segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
         </Grid.Column>
       </Grid>
