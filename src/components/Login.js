@@ -25,7 +25,6 @@ class Login extends React.Component {
     this.setState({ username: '', password: ''})
   }
 
-
   render(){
     const { username, password } = this.state
     return(
@@ -45,8 +44,8 @@ class Login extends React.Component {
               onChange={(e) => this.setState({ password: e.target.value })} />
           </Form.Field>
           <div>
-            <Button type='submit'>Login</Button>
-            <Button as={ Link } to='/signUp'>SignUp</Button>
+            <Button color='yellow' type='submit'>Login</Button>
+            <Button color='yellow' as={ Link } to='/signUp'>SignUp</Button>
           </div>
         </Form>
       </div>

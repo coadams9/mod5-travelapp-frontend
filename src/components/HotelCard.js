@@ -2,9 +2,15 @@ import React from 'react'
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { hotelPics } from '../actions/index'
+
+Array.prototype.sample = function(){
+  return this[Math.floor(Math.random()*this.length)];
+}
 
 
 class HotelCard extends React.Component {
+
 
 
   render(){
@@ -12,7 +18,7 @@ class HotelCard extends React.Component {
 
     return(
       <Card>
-         <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEzLvjmEJvrGketgZ0tcNMivuUzGozWB7cFu2NK14blmNjzrh_FA' />
+         <Image src={hotelPics.sample()} />
         <Card.Content>
           <Card.Header>{htl.name}</Card.Header>
         </Card.Content>

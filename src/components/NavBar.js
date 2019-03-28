@@ -46,7 +46,9 @@ class NavBar extends Component {
             My Trips
           </Menu.Item>
         </Link>
-        <Menu.Item position='right'><Header style={{ color: 'lightBlue'}}>Pack Your Bags</Header></Menu.Item>
+        <Menu.Item><iframe width="100" height="30" controls src="https://www.youtube.com/embed/0PRlMoQ3SB8" frameborder="0" allow="accelerometer; autoplay;"></iframe></Menu.Item>
+        {localStorage.username ? <Menu.Item position='left'><Header style={{ color: 'gold'}}>WELCOME  {localStorage.username.toUpperCase()}</Header></Menu.Item> : null}
+        <Menu.Item position='right'><Header style={{ color: 'gold'}}>Pack Your Bags</Header></Menu.Item>
       </Menu>
     )
   }

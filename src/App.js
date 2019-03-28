@@ -17,13 +17,13 @@ class App extends Component {
       <div>
         <NavBar />
           <Switch>
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/trips' component={Trips} />
-            <Route exact path='/hotels' component={Hotels} />
-            <Route exact path='/signUp' component={SignUp} />
-            <Route exact path='/home' component={LocationContainer} />
-            <Route exact path='/flights' component={FlightsContainer} />
-            <Route exact path='/' component={LoginContainer} />
+            <Route path='/trips' component={Trips} />
+            <Route path='/login' component={Login} />
+            <Route path='/hotels' component={Hotels} />
+            <Route path='/signUp' component={SignUp} />
+            <Route path='/home' component={LocationContainer} />
+            <Route path='/flights' component={FlightsContainer} />
+            <Route path='/' component={LoginContainer} />
           </Switch>
       </div>
     )

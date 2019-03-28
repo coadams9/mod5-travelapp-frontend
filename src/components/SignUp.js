@@ -51,15 +51,15 @@ class SignUp extends React.Component {
           </Form.Field>
           <Form.Field>
             <label>Password</label>
-            <input name='password' placeholder='Enter Password...' value={password}
+            <input name='password' type='password' placeholder='Enter Password...' value={password}
               onChange={(e) => this.setState({ password: e.target.value })} />
           </Form.Field>
           <Form.Field>
             <label>Password Confirmation</label>
-            <input name='password_confirm' value={password_confirm} placeholder='Enter Password....Again..yea...again'
+            <input type='password' name='password_confirm' value={password_confirm} placeholder='Enter Password....Again..yea...again'
               onChange={(e) => this.setState({ password_confirm: e.target.value })} />
           </Form.Field>
-            <Button type='submit'>Submit</Button>
+            <Button id='signupButton' color='yellow' type='submit'>Submit</Button>
           </Form>
         </div>
       </div>

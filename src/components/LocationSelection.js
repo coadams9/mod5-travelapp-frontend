@@ -30,6 +30,8 @@ class LocationSelection extends React.Component {
     const arrives = arrivals.map(arv => <ArrivalCard key={arv.id} arv={arv} />)
 
     return(
+      <React.Fragment>
+      <Header id='welcomeHead' style={{ textAlign: 'center', color: 'gold', fontSize: '25px' }}>Where Are We Going Today {localStorage.username.toUpperCase()}?</Header>
       <Segment id='location-selection'>
       {slctdArv && slctdDep !== false ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
         <Grid columns={2} relaxed='very'>
@@ -59,6 +61,7 @@ class LocationSelection extends React.Component {
         <Divider vertical></Divider>
         {slctdArv && slctdDep !== null ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='bottom' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
       </Segment>
+      </React.Fragment>
     )
   }
 }

@@ -34,7 +34,8 @@ class Hotels extends React.Component {
     checkIn: new Date(),
     checkOut: new Date(),
     rooms: '',
-    adults: ''
+    adults: '',
+    loading: false
   }
 
   formatDate = (date) => {
@@ -56,6 +57,12 @@ class Hotels extends React.Component {
   }
 
   handleClick = (checkIn, checkOut, rooms, adults, ctid) => {
+    this.setState({ loading: true })
+
+    setTimeout(() => {
+     return this.setState({ loading: false })
+    }, 9000)
+
     let newCheckIn = this.formatDate(checkIn)
     let newCheckOut = this.formatDate(checkOut)
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/hotels/create-session?rooms=${rooms}&citycode=${ctid}&checkin=${newCheckIn}&checkout=${newCheckOut}&adults=${adults}`, {
@@ -73,7 +80,7 @@ class Hotels extends React.Component {
 
 
   render(){
-    const { checkIn, checkOut, rooms, adults } = this.state
+    const { checkIn, checkOut, rooms, adults, loading } = this.state
     const { ctid, hotels } = this.props
 
 
@@ -92,7 +99,7 @@ class Hotels extends React.Component {
                 </div>
                 <Form.Select id='select' label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
                 <Form.Select id='select' label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
-                <Button id='hotelButn' color='yellow' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)}>Find Hotels</Button>
+                <Button id='hotelButn' loading={loading} color='yellow' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)}>Find Hotels</Button>
               </Form>
         </Segment>
         <Card.Group itemsPerRow={5}>

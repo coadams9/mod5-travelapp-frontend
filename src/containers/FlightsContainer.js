@@ -31,6 +31,10 @@ const bagOptions = [
 
 class FlightsContainer extends React.Component {
 
+  state = {
+    loading: false
+  }
+
   formatDate = (date) => {
     var d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -54,6 +58,12 @@ class FlightsContainer extends React.Component {
   }
 
   handleClick = (selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags) => {
+    this.setState({ loading: true })
+
+    setTimeout(() => {
+     return this.setState({ loading: false })
+    }, 5500)
+
     let newDate = this.props.departDate
     let formattedDate = this.formatDate(newDate)
     this.getFlights(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags, formattedDate)
@@ -62,6 +72,7 @@ class FlightsContainer extends React.Component {
 
   render(){
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
+    const { loading } = this.state
 
 
     return(
@@ -79,7 +90,7 @@ class FlightsContainer extends React.Component {
                   <Form.Select fluid label='Adults' onChange={(e, { value }) => adults(value)} options={adultOptions} placeholder='Adults on Flight' />
                   <Form.Select fluid label='Cabin' onChange={(e, { value }) => cabin(value)} options={options} placeholder='Cabin Preference' />
                   <Form.Select fluid label='Bags' onChange={(e, { value }) => bags(value)} options={bagOptions} placeholder='Number of Bags' />
-                  <Button color='yellow' onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn'>Lets Go!!</Button>
+                  <Button color='yellow' loading={loading} onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn'>Lets Go!!</Button>
                 </Form.Group>
               </Container>
           </Form>

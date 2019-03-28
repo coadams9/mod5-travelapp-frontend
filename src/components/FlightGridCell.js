@@ -72,19 +72,19 @@ class FlightGridCell extends React.Component {
     }
 
     return(
-      <Grid celled='internally'>
+      <Grid celled>
         <Grid.Column stretched={true} width={4}>
           <Image src={flightPics.sample()} />
         </Grid.Column>
         <Grid.Column id='flightInfo' width={9}>
-          <p>Price: {price}</p>
-          <p>Depart Date: {flights.departDate}</p>
-          <p>Departure Time: {segset.leaveTimeDisplay}</p>
-          <p>Arrival Time: {segset.arriveTimeDisplay}</p>
-          <p>Cabin: {segset.cabin}</p>
-          <p>Duration: {segset.duration} mins</p>
+          <h3>Price: {price}</h3>
+          <h3>Depart Date: {flights.departDate}</h3>
+          <h3>Departure Time: {segset.leaveTimeDisplay}</h3>
+          <h3>Arrival Time: {segset.arriveTimeDisplay}</h3>
+          <h3>Cabin: {segset.cabin}</h3>
+          <h3>Duration: {segset.duration} mins</h3>
         </Grid.Column>
-        <Grid.Column stretched={true} width={2}>
+        <Grid.Column stretched={true} width={1}>
           {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={(e) => this.handleClick(price, segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
         </Grid.Column>
       </Grid>

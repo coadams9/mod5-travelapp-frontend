@@ -7,7 +7,6 @@ import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
 class TripInfo extends React.Component {
 
   deleteTrip = (event, trp) => {
-    debugger
     event.target.parentElement.parentElement.parentElement.remove()
     fetch(`http://localhost:3000/trips/${trp.id}`, {
       method: 'DELETE'
@@ -24,6 +23,7 @@ class TripInfo extends React.Component {
         <Table.Row>
           <Table.Cell>
             Leaving From: {trp.dptdisplay}
+            <br />
             <br />
             Arriving At: {trp.arvdisplay}
           </Table.Cell>
@@ -44,7 +44,7 @@ class TripInfo extends React.Component {
             Address: {trp.hoteladdress}
           </Table.Cell>
           <Table.Cell>
-            <Button onClick={(event) => this.deleteTrip(event, trp)} animated='fade'><Button.Content visible>Delete Trip</Button.Content><Button.Content hidden>UnPack Your Bags</Button.Content></Button>
+            <Button color='yellow' onClick={(event) => this.deleteTrip(event, trp)} animated='fade'><Button.Content visible>Delete Trip</Button.Content><Button.Content hidden>UnPack Your Bags</Button.Content></Button>
           </Table.Cell>
         </Table.Row>
       </Table.Body>
