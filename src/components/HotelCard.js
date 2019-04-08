@@ -15,6 +15,7 @@ class HotelCard extends React.Component {
 
   render(){
     const { htl, hotelToStore } = this.props
+    console.log(htl)
 
     return(
       <Card>
@@ -28,6 +29,7 @@ class HotelCard extends React.Component {
           <Card.Description>Phone Number: {htl.phone}</Card.Description>
           <Card.Description>User Rating: {htl.userrating}</Card.Description>
           <Card.Description>Brand: {htl.brand}</Card.Description>
+          <a href={"https://www.kayak.com/" + htl.shareURL}>More Info</a>
         </Card.Content>
         <Card.Content extra>
           <Icon name='star'>{htl.stars} Stars</Icon>
