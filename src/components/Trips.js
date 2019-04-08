@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
-import { KEY, tripInfoToStore } from '../actions/index'
+import { tripInfoToStore } from '../actions/index'
 import TableHead from './TableHead'
 
 

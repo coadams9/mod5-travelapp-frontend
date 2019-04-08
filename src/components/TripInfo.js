@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header, Button, Table, Icon, Rating } from 'semantic-ui-react'
+import { Button, Table } from 'semantic-ui-react'
 
 
 

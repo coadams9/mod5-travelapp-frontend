@@ -61,7 +61,7 @@ class FlightGridCell extends React.Component {
 
   render(){
 
-    const { segset, flightToStore, flights } = this.props
+    const { segset, flights } = this.props
     let price;
     console.log(flights)
 
