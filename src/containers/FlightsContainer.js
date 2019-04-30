@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import { getDepartDate, adults, cabin, bags, KEY, showFlights } from '../actions/index'
+import { getDepartDate, adults, cabin, bags, showFlights } from '../actions/index'
+import { KEY } from '../.env'
 
 const options = [
   { key: 1, text: 'Economy', value: 'e' },
@@ -37,9 +38,9 @@ class FlightsContainer extends React.Component {
 
   formatDate = (date) => {
     var d = new Date(date),
-    month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate(),
-    year = d.getFullYear();
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
@@ -61,7 +62,7 @@ class FlightsContainer extends React.Component {
     this.setState({ loading: true })
 
     setTimeout(() => {
-     return this.setState({ loading: false })
+      return this.setState({ loading: false })
     }, 5500)
 
     let newDate = this.props.departDate
@@ -70,34 +71,34 @@ class FlightsContainer extends React.Component {
   }
 
 
-  render(){
+  render() {
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
     const { loading } = this.state
 
 
-    return(
+    return (
       <div id='flightContainer'>
-      <Segment id='fltSegment'>
+        <Segment id='fltSegment'>
           <Header as='h3' id='departHead'>Departing From: {selectedDepart.smartyDisplay}</Header> <Header id='arriveHead' as='h3'>Arriving At: {selectedArrival.smartyDisplay}</Header>
           <Form id='flightForm'>
-              <br />
-              <Container id='flightFormInputs'>
-                <Form.Group inline>
-                  <div id='flightlabel'>
-                    <strong><p>Departure Date</p></strong>
-                    <DatePicker selected={departDate} onChange={getDepartDate} />
-                  </div>
-                  <Form.Select fluid label='Adults' onChange={(e, { value }) => adults(value)} options={adultOptions} placeholder='Adults on Flight' />
-                  <Form.Select fluid label='Cabin' onChange={(e, { value }) => cabin(value)} options={options} placeholder='Cabin Preference' />
-                  <Form.Select fluid label='Bags' onChange={(e, { value }) => bags(value)} options={bagOptions} placeholder='Number of Bags' />
-                  <Button color='yellow' loading={loading} onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn'>Lets Go!!</Button>
-                </Form.Group>
-              </Container>
+            <br />
+            <Container id='flightFormInputs'>
+              <Form.Group inline>
+                <div id='flightlabel'>
+                  <strong><p>Departure Date</p></strong>
+                  <DatePicker selected={departDate} onChange={getDepartDate} />
+                </div>
+                <Form.Select fluid label='Adults' onChange={(e, { value }) => adults(value)} options={adultOptions} placeholder='Adults on Flight' />
+                <Form.Select fluid label='Cabin' onChange={(e, { value }) => cabin(value)} options={options} placeholder='Cabin Preference' />
+                <Form.Select fluid label='Bags' onChange={(e, { value }) => bags(value)} options={bagOptions} placeholder='Number of Bags' />
+                <Button color='yellow' loading={loading} onClick={() => this.handleClick(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, departDate)} id='fltButn'>Lets Go!!</Button>
+              </Form.Group>
+            </Container>
           </Form>
-      </Segment>
-      <Container id='fltResults'>
-         {flights ? <ShownFlightsContainer /> : null}
-      </Container>
+        </Segment>
+        <Container id='fltResults'>
+          {flights ? <ShownFlightsContainer /> : null}
+        </Container>
       </div>
     )
   }

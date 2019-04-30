@@ -6,9 +6,9 @@ import LocationSelection from '../components/LocationSelection'
 class LocationContainer extends React.Component {
 
 
-  render(){
+  render() {
 
-    return(
+    return (
       <div>
         <LocationSelection />
       </div>

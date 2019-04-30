@@ -18,16 +18,16 @@ const initialState = {
 const flightReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case 'PIC': {
-      return { ...oldState, flightPic: action.pic}
+      return { ...oldState, flightPic: action.pic }
     }
     case 'TRIP_INFO': {
-      return { ...oldState, tripInfo: action.data}
+      return { ...oldState, tripInfo: action.data }
     }
     case 'FLT_PRICE_TO_STORE': {
-      return { ...oldState, flightPrice: action.price}
+      return { ...oldState, flightPrice: action.price }
     }
     case 'DPT_DATE': {
-      return { ...oldState, departDate: action.date}
+      return { ...oldState, departDate: action.date }
     }
     case 'FLT_TO_STORE': {
       return { ...oldState, selectedFlight: action.segset }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Segment, Button, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
-import { KEY } from '../actions/index'
+import { KEY } from '../.env'
 import HotelCard from './HotelCard'
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -40,9 +40,9 @@ class Hotels extends React.Component {
 
   formatDate = (date) => {
     var d = new Date(date),
-    month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate(),
-    year = d.getFullYear();
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
@@ -58,11 +58,11 @@ class Hotels extends React.Component {
 
   handleClick = (checkIn, checkOut, rooms, adults, ctid) => {
     this.setState({ loading: true })
-    
+
     setTimeout(() => {
       return this.setState({ loading: false })
     }, 9000)
-    
+
     let newCheckIn = this.formatDate(checkIn)
     let newCheckOut = this.formatDate(checkOut)
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/hotels/create-session?rooms=${rooms}&citycode=${ctid}&checkin=${newCheckIn}&checkout=${newCheckOut}&adults=${adults}`, {
@@ -72,39 +72,39 @@ class Hotels extends React.Component {
         "X-RapidAPI-Key": KEY
       },
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      this.props.hotelToStore(data)
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        this.props.hotelToStore(data)
+      })
     debugger
   }
 
   showHotels = () => this.props.hotels.hotelset.map(htl => <HotelCard htl={htl} key={htl.id} />)
 
 
-  render(){
+  render() {
     const { checkIn, checkOut, rooms, adults, loading } = this.state
     const { ctid, hotels } = this.props
 
 
-    return(
+    return (
       <div>
         <Segment id='hotelSelection'>
-            <h1 id='hotelHead'>Choose A Hotel</h1>
-              <Form id='hotelForm'>
-                <div class='inputs'>
-                  <strong><p>Check In Date</p></strong>
-                  <DatePicker name='checkIn' selected={checkIn} onChange={(event) => this.setState({ checkIn: event })} />
-                </div>
-                <div class='inputs'>
-                  <strong><p>Check Out Date</p></strong>
-                  <DatePicker name='checkOut' selected={checkOut} onChange={(event) => this.setState({ checkOut: event })} />
-                </div>
-                <Form.Select id='select' label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
-                <Form.Select id='select' label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
-                <Button id='hotelButn' loading={loading} color='yellow' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)}>Find Hotels</Button>
-              </Form>
+          <h1 id='hotelHead'>Choose A Hotel</h1>
+          <Form id='hotelForm'>
+            <div class='inputs'>
+              <strong><p>Check In Date</p></strong>
+              <DatePicker name='checkIn' selected={checkIn} onChange={(event) => this.setState({ checkIn: event })} />
+            </div>
+            <div class='inputs'>
+              <strong><p>Check Out Date</p></strong>
+              <DatePicker name='checkOut' selected={checkOut} onChange={(event) => this.setState({ checkOut: event })} />
+            </div>
+            <Form.Select id='select' label='Rooms' name='rooms' value={rooms} onChange={(event, { value }) => this.setState({ rooms: value })} options={roomOptions} placeholder='Number of Rooms...' />
+            <Form.Select id='select' label='Adults' name='adults' value={adults} onChange={(event, { value }) => this.setState({ adults: value })} options={adultOptions} placeholder='Adults in Room...' />
+            <Button id='hotelButn' loading={loading} color='yellow' onClick={() => this.handleClick(checkIn, checkOut, rooms, adults, ctid)}>Find Hotels</Button>
+          </Form>
         </Segment>
         <Card.Group itemsPerRow={5}>
           {hotels ? this.showHotels() : null}

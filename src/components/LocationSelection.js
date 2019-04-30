@@ -21,46 +21,46 @@ class LocationSelection extends React.Component {
   }
 
 
-  render(){
+  render() {
 
     const { departures, arrivals, slctdDep, slctdArv, getHotelId } = this.props
 
-
+    // debugger
     const departs = departures.map(dpt => <DepartureCard key={dpt.id} dpt={dpt} />)
     const arrives = arrivals.map(arv => <ArrivalCard key={arv.id} arv={arv} />)
 
-    return(
+    return (
       <React.Fragment>
-      <Header id='welcomeHead' style={{ textAlign: 'center', color: 'gold', fontSize: '25px' }}>Where Are We Going Today {localStorage.username.toUpperCase()}?</Header>
-      <Segment id='location-selection'>
-      {slctdArv && slctdDep !== false ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
-        <Grid columns={2} relaxed='very'>
-          <Grid.Column>
-          <Header id="leavingFromHead" as='h1'>Leaving From...</Header>
-          <Search aligned='left'
-                  placeholder='Depart From...'
-                  onSearchChange={this.handleSearchChange1}
-                  showNoResults={false}
-                  />
-                  <div id='departs'>
-                  {departs}
-                  </div>
-          </Grid.Column>
-          <Grid.Column>
-          <Header id="arrivingAtHead" as='h1'>Arriving At...</Header>
-          <Search aligned='right'
-                  placeholder='Arrive At...'
-                  onSearchChange={this.handleSearchChange2}
-                  showNoResults={false}
-                  />
-                  <div id='arrivals'>
-                  {arrives}
-                  </div>
-          </Grid.Column>
-        </Grid>
-        <Divider vertical></Divider>
-        {slctdArv && slctdDep !== null ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='bottom' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
-      </Segment>
+        <Header id='welcomeHead' style={{ textAlign: 'center', color: 'gold', fontSize: '25px' }}>Where Are We Going Today {localStorage.username.toUpperCase()}?</Header>
+        <Segment id='location-selection'>
+          {slctdArv && slctdDep !== false ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='top' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
+          <Grid columns={2} relaxed='very'>
+            <Grid.Column>
+              <Header id="leavingFromHead" as='h1'>Leaving From...</Header>
+              <Search aligned='left'
+                placeholder='Depart From...'
+                onSearchChange={this.handleSearchChange1}
+                showNoResults={false}
+              />
+              <div id='departs'>
+                {departs}
+              </div>
+            </Grid.Column>
+            <Grid.Column>
+              <Header id="arrivingAtHead" as='h1'>Arriving At...</Header>
+              <Search aligned='right'
+                placeholder='Arrive At...'
+                onSearchChange={this.handleSearchChange2}
+                showNoResults={false}
+              />
+              <div id='arrivals'>
+                {arrives}
+              </div>
+            </Grid.Column>
+          </Grid>
+          <Divider vertical></Divider>
+          {slctdArv && slctdDep !== null ? <Link to='/flights'><Button color='yellow' onClick={() => getHotelId(slctdArv.ctid)} attached='bottom' animated='fade'><Button.Content visible>Choose Flight</Button.Content><Button.Content hidden>Pack Your Bags !!</Button.Content></Button></Link> : null}
+        </Segment>
       </React.Fragment>
     )
   }
