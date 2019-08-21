@@ -1,7 +1,8 @@
-const REACT_APP_KEY = `5ea02a9b2amshe55a7923df885fdp1e1fbajsn961d52a697bb`
+import { REACT_APP_KEY } from '../.env'
 
 export function searchTerm1(value) {
   return dispatch => {
+    debugger
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/locations/search?where=/${value}`, {
       headers: {
         "Content-Type": "application/json",
