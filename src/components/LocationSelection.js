@@ -25,7 +25,7 @@ class LocationSelection extends React.Component {
 
     const { departures, arrivals, slctdDep, slctdArv, getHotelId } = this.props
 
-    // debugger
+
     const departs = departures.map(dpt => <DepartureCard key={dpt.id} dpt={dpt} />)
     const arrives = arrivals.map(arv => <ArrivalCard key={arv.id} arv={arv} />)
 

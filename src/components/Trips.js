@@ -35,21 +35,21 @@ class Trips extends React.Component {
         'Content-Type': 'application/json'
       },
     }).then(res => res.json())
-    .then(data => this.props.tripInfoToStore(data))
+      .then(data => this.props.tripInfoToStore(data))
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.tripInfo()
   }
 
 
 
-  render(){
+  render() {
     const { hotel, flight, arv, dpt, fltPrc } = this.props
     this.saveTrip(hotel, flight, arv, dpt, fltPrc)
 
 
-    return(
+    return (
       <div id='table'>
         <TableHead />
       </div>

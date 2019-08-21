@@ -1,15 +1,16 @@
-import { KEY } from '../.env'
+const REACT_APP_KEY = `5ea02a9b2amshe55a7923df885fdp1e1fbajsn961d52a697bb`
 
 export function searchTerm1(value) {
   return dispatch => {
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/locations/search?where=/${value}`, {
       headers: {
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": KEY
+        "X-RapidAPI-Key": REACT_APP_KEY
       },
     })
       .then(res => res.json())
       .then(data => {
+        debugger
         dispatch({ type: 'DEPARTURES', data })
       })
     dispatch({ type: 'SRCH_LOCT1', value })
@@ -21,7 +22,7 @@ export function searchTerm2(value) {
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/locations/search?where=/${value}`, {
       headers: {
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": KEY
+        "X-RapidAPI-Key": REACT_APP_KEY
       },
     })
       .then(res => res.json())
