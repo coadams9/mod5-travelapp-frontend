@@ -73,15 +73,17 @@ class FlightsContainer extends React.Component {
     this.getFlights(selectedDepart, selectedArrival, adultsSte, bagsSte, cabinSte, adults, cabin, bags, formattedDate)
   }
 
+  pushHome = () => <div>{this.props.history.push('/home')}</div>
+
 
   render() {
     debugger
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
     const { loading } = this.state
-    const pushHome = <div>{this.props.history.push('/home')}</div>
+
 
     if (!selectedDepart) {
-      return pushHome
+      return this.pushHome()
     }
 
     return (

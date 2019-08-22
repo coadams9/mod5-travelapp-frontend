@@ -8,7 +8,7 @@ const initialState = {
 const hotelReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case 'HTL_TO_STORE': {
-      return { ...oldState, selectedHotel: action.htl}
+      return { ...oldState, selectedHotel: action.htl }
     }
     case 'HTL_DATA': {
       return { ...oldState, hotelId: action.code }
