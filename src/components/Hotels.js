@@ -2,9 +2,10 @@ import React from 'react'
 import { Form, Segment, Button, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
-import { KEY } from '../../.env'
+// import { REACT_APP_KEY } from '../.env'
 import HotelCard from './HotelCard'
 import "react-datepicker/dist/react-datepicker.css"
+const KEY = process.env.REACT_APP_KEY
 
 
 
@@ -77,7 +78,6 @@ class Hotels extends React.Component {
         console.log(data)
         this.props.hotelToStore(data)
       })
-    debugger
   }
 
   showHotels = () => this.props.hotels.hotelset.map(htl => <HotelCard htl={htl} key={htl.id} />)

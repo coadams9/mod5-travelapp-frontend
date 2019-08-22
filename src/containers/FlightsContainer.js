@@ -5,7 +5,8 @@ import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { getDepartDate, adults, cabin, bags, showFlights } from '../actions/index'
-import { KEY } from '../.env'
+// import { KEY } from '../.env'
+const KEY = process.env.REACT_APP_KEY
 
 const options = [
   { key: 1, text: 'Economy', value: 'e' },
