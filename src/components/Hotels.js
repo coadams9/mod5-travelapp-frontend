@@ -2,7 +2,6 @@ import React from 'react'
 import { Form, Segment, Button, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
-// import { REACT_APP_KEY } from '../.env'
 import HotelCard from './HotelCard'
 import "react-datepicker/dist/react-datepicker.css"
 const KEY = process.env.REACT_APP_KEY
@@ -75,7 +74,6 @@ class Hotels extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         this.props.hotelToStore(data)
       })
   }

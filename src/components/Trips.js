@@ -7,6 +7,7 @@ import TableHead from './TableHead'
 class Trips extends React.Component {
 
   saveTrip = (hotel, flight, arv, dpt, fltPrc) => {
+    debugger
     fetch('http://localhost:3000/trips', {
       headers: {
         'Content-Type': 'application/json',
@@ -46,8 +47,9 @@ class Trips extends React.Component {
 
   render() {
     const { hotel, flight, arv, dpt, fltPrc } = this.props
-    this.saveTrip(hotel, flight, arv, dpt, fltPrc)
-
+    if (hotel) {
+      this.saveTrip(hotel, flight, arv, dpt, fltPrc)
+    }
 
     return (
       <div id='table'>

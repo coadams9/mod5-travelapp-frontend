@@ -5,7 +5,9 @@ import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { getDepartDate, adults, cabin, bags, showFlights } from '../actions/index'
-// import { KEY } from '../.env'
+import { withRouter } from 'react-router-dom'
+
+
 const KEY = process.env.REACT_APP_KEY
 
 const options = [
@@ -73,9 +75,14 @@ class FlightsContainer extends React.Component {
 
 
   render() {
+    debugger
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
     const { loading } = this.state
+    const pushHome = <div>{this.props.history.push('/home')}</div>
 
+    if (!selectedDepart) {
+      return pushHome
+    }
 
     return (
       <div id='flightContainer'>
@@ -118,4 +125,6 @@ const mapStateToProps = (state) => {
   }
 }
 
+
+const FlightsContainerWithRouter = withRouter(FlightsContainer)
 export default connect(mapStateToProps, { getDepartDate, adults, cabin, bags, showFlights })(FlightsContainer)

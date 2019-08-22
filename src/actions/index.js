@@ -1,4 +1,3 @@
-// import { REACT_APP_KEY } from '../.env'
 const KEY = process.env.REACT_APP_KEY
 
 
@@ -12,7 +11,6 @@ export function searchTerm1(value) {
     })
       .then(res => res.json())
       .then(data => {
-        debugger
         dispatch({ type: 'DEPARTURES', data })
       })
     dispatch({ type: 'SRCH_LOCT1', value })
