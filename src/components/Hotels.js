@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Segment, Button, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
-import { KEY } from '../.env'
+import { KEY } from '../../.env'
 import HotelCard from './HotelCard'
 import "react-datepicker/dist/react-datepicker.css"
 

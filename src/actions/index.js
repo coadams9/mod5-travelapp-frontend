@@ -1,4 +1,4 @@
-import { REACT_APP_KEY } from '../.env'
+import { REACT_APP_KEY } from '../../.env'
 
 export function searchTerm1(value) {
   return dispatch => {
