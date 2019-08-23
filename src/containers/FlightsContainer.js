@@ -77,7 +77,6 @@ class FlightsContainer extends React.Component {
 
 
   render() {
-    debugger
     const { selectedDepart, selectedArrival, getDepartDate, departDate, adultsSte, cabinSte, bagsSte, adults, cabin, bags, flights } = this.props
     const { loading } = this.state
 

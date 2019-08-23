@@ -59,10 +59,6 @@ class Hotels extends React.Component {
   handleClick = (checkIn, checkOut, rooms, adults, ctid) => {
     this.setState({ loading: true })
 
-    setTimeout(() => {
-      return this.setState({ loading: false })
-    }, 9000)
-
     let newCheckIn = this.formatDate(checkIn)
     let newCheckOut = this.formatDate(checkOut)
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/hotels/create-session?rooms=${rooms}&citycode=${ctid}&checkin=${newCheckIn}&checkout=${newCheckOut}&adults=${adults}`, {
@@ -74,7 +70,16 @@ class Hotels extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        this.props.hotelToStore(data)
+        if (data) {
+          this.setState({ loading: false })
+        }
+        if (data.error) {
+          alert('Please try your search with different inputs')
+        } else if (data.resultcount === 0) {
+          alert('There are no rooms available. Try different times')
+        } else {
+          this.props.hotelToStore(data)
+        }
       })
   }
 

@@ -7,7 +7,6 @@ import TableHead from './TableHead'
 class Trips extends React.Component {
 
   saveTrip = (hotel, flight, arv, dpt, fltPrc) => {
-    debugger
     fetch('http://localhost:3000/trips', {
       headers: {
         'Content-Type': 'application/json',

@@ -27,6 +27,7 @@ class Login extends React.Component {
 
 
   render() {
+    localStorage.clear()
     const { username, password } = this.state
     return (
       <div id='form-container'>
