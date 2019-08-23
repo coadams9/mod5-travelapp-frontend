@@ -13,7 +13,6 @@ class Login extends React.Component {
   handleSubmit = (event, { value }) => {
     event.preventDefault()
     getAuthToken(this.state).then(payload => {
-      debugger
       if (payload.error) {
         alert('Somethng went wrong. Please try again!')
       } else {
