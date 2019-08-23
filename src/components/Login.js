@@ -13,17 +13,18 @@ class Login extends React.Component {
   handleSubmit = (event, { value }) => {
     event.preventDefault()
     getAuthToken(this.state).then(payload => {
-      localStorage.setItem('token', payload.token)
-      localStorage.setItem('username', payload.user)
-      localStorage.setItem('userId', payload.userId)
-      if (localStorage.getItem('token') && localStorage.getItem('username') !== 'undefined') {
-        this.props.history.push("/home")
+      debugger
+      if (payload.error) {
+        alert('Somethng went wrong. Please try again!')
       } else {
-        alert('Nah')
+        localStorage.setItem('token', payload.token)
+        localStorage.setItem('username', payload.user)
+        localStorage.setItem('userId', payload.userId)
+        this.props.history.push("/home")
       }
     })
-    this.setState({ username: '', password: '' })
   }
+
 
   render() {
     const { username, password } = this.state
