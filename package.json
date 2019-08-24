@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "node": "=10.16.3",
     "dotenv": "^8.1.0",
     "react": "^16.8.4",
     "react-datepicker": "^2.2.0",

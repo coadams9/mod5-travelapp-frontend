@@ -5,7 +5,7 @@ import { Form, Header, Segment, Container, Button } from 'semantic-ui-react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { getDepartDate, adults, cabin, bags, showFlights } from '../actions/index'
-import { withRouter } from 'react-router-dom'
+
 
 
 const KEY = process.env.REACT_APP_KEY
@@ -127,5 +127,5 @@ const mapStateToProps = (state) => {
 }
 
 
-const FlightsContainerWithRouter = withRouter(FlightsContainer)
+
 export default connect(mapStateToProps, { getDepartDate, adults, cabin, bags, showFlights })(FlightsContainer)

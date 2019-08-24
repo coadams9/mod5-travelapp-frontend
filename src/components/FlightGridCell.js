@@ -3,8 +3,7 @@ import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { flightPics } from '../actions/index'
-
-
+// import plane from '../images'
 
 
 const fPrices = [
@@ -48,8 +47,8 @@ const cPrices = [
 
 
 
-Array.prototype.sample = function(){
-  return this[Math.floor(Math.random()*this.length)];
+Array.prototype.sample = function () {
+  return this[Math.floor(Math.random() * this.length)];
 }
 
 class FlightGridCell extends React.Component {
@@ -59,19 +58,19 @@ class FlightGridCell extends React.Component {
     this.props.flightPriceToStore(price)
   }
 
-  render(){
+  render() {
 
     const { segset, flights } = this.props
     let price;
     console.log(flights)
 
-    if (segset.cabin == 'first'){
+    if (segset.cabin === 'first') {
       price = fPrices.sample().text
     } else {
       price = cPrices.sample().text
     }
 
-    return(
+    return (
       <Grid celled>
         <Grid.Column stretched={true} width={4}>
           <Image src={flightPics.sample()} />
