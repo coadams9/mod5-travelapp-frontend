@@ -3,6 +3,8 @@ import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { flightPics } from '../actions/index'
+import { withRouter } from 'react-router-dom'
+
 
 
 const fPrices = [
@@ -55,13 +57,13 @@ class FlightGridCell extends React.Component {
   handleClick = (price, segset) => {
     this.props.flightToStore(segset)
     this.props.flightPriceToStore(price)
+    this.props.history.push('/hotels')
   }
 
   render() {
 
     const { segset, flights } = this.props
     let price;
-    console.log(flights)
 
     if (segset.cabin === 'first') {
       price = fPrices.sample().text
@@ -75,15 +77,35 @@ class FlightGridCell extends React.Component {
           <Image src={flightPics.sample()} />
         </Grid.Column>
         <Grid.Column id='flightInfo' width={9}>
-          <h3>Price: {price}</h3>
-          <h3>Depart Date: {flights.departDate}</h3>
-          <h3>Departure Time: {segset.leaveTimeDisplay}</h3>
-          <h3>Arrival Time: {segset.arriveTimeDisplay}</h3>
-          <h3>Cabin: {segset.cabin}</h3>
-          <h3>Duration: {segset.duration} mins</h3>
+          <div id='insideFlightInfo'>
+            <div className='flightDetails'>
+              <h3>Price:</h3>
+              <h3>{price}</h3>
+            </div>
+            <div className='flightDetails'>
+              <h3>Depart Date:</h3>
+              <h3>{flights.departDate}</h3>
+            </div>
+            <div className='flightDetails'>
+              <h3>Departure Time:</h3>
+              <h3>{segset.leaveTimeDisplay}</h3>
+            </div>
+            <div className='flightDetails'>
+              <h3>Arrival Time:</h3>
+              <h3>{segset.arriveTimeDisplay}</h3>
+            </div>
+            <div className='flightDetails'>
+              <h3>Cabin:</h3>
+              <h3>{segset.cabin}</h3>
+            </div>
+            <div className='flightDetails'>
+              <h3>Duration:</h3>
+              <h3>{segset.duration} mins</h3>
+            </div>
+          </div>
         </Grid.Column>
-        <Grid.Column stretched={true} width={1}>
-          {localStorage.getItem('token') ? <Link to='/hotels' color='yellow '><h4>Book Flight</h4><Button icon='plane' size='massive' onClick={(e) => this.handleClick(price, segset)}></Button></Link> : <p>Please Login or SignUp to Book a Flight! <Link to='/login'>Login</Link></p>}
+        <Grid.Column stretched={true} width={3}>
+          {localStorage.getItem('token') ? <Button id='bkfltbutton' basic inverted color='blue' size='large' onClick={(e) => this.handleClick(price, segset)}>Book Flight!</Button> : null}
         </Grid.Column>
       </Grid>
     )
@@ -103,5 +125,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(FlightGridCell)
+const WRFlightGridCell = withRouter(FlightGridCell)
+export default connect(mapStateToProps, mapDispatchToProps)(WRFlightGridCell)

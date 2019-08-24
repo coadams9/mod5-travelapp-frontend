@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { hotelPics } from '../actions/index'
 
-Array.prototype.sample = function(){
-  return this[Math.floor(Math.random()*this.length)];
+Array.prototype.sample = function () {
+  return this[Math.floor(Math.random() * this.length)];
 }
 
 
@@ -13,13 +13,12 @@ class HotelCard extends React.Component {
 
 
 
-  render(){
+  render() {
     const { htl, hotelToStore } = this.props
-    console.log(htl)
 
-    return(
+    return (
       <Card>
-         <Image src={hotelPics.sample()} />
+        <Image src={hotelPics.sample()} />
         <Card.Content>
           <Card.Header>{htl.name}</Card.Header>
         </Card.Content>
@@ -34,7 +33,7 @@ class HotelCard extends React.Component {
         <Card.Content extra>
           <Icon name='star'>{htl.stars} Stars</Icon>
           <div className='ui two buttons'>
-            <Button as={ Link } to='/trips' basic color='yellow' onClick={() => hotelToStore(htl)}>Book Hotel</Button>
+            <Button as={Link} to='/trips' basic color='yellow' onClick={() => hotelToStore(htl)}>Book Hotel</Button>
           </div>
         </Card.Content>
       </Card>

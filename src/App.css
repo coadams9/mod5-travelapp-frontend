@@ -156,14 +156,37 @@ div#flightInfo {
   width: auto;
   background-color: gold;
 } */
-
+/* -------------------------flight Grid Cells------------------------------- */
 .ui.celled.grid {
   border-width: thick;
   border-style: solid;
   border-color: gold;
-  background: #00bfff;
+  background-color: black;
   font-family: 'Amatic SC', cursive;
+  opacity: 0.89
 }
+
+#insideFlightInfo{
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.flightDetails{
+  margin: inherit
+}
+
+.ui.image{
+  max-height: 167px
+}
+
+#bkfltbutton{
+  border-radius: 50%
+}
+
+/* ---------------------flight Grid Cells----------------------- */
 
 .ui.five.cards {
   padding: 10px;
