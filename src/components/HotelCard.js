@@ -43,7 +43,12 @@ class HotelCard extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    hotelToStore: (htl) => dispatch({ type: 'HTL_TO_STORE', htl })
+    hotelToStore: (htl) => {
+      dispatch({ type: 'HTL_TO_STORE', htl })
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
+    }
   }
 }
 
