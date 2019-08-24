@@ -3,7 +3,6 @@ import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { flightPics } from '../actions/index'
-import plane from '../images/plane.jpg'
 
 
 const fPrices = [
@@ -73,7 +72,7 @@ class FlightGridCell extends React.Component {
     return (
       <Grid celled>
         <Grid.Column stretched={true} width={4}>
-          <Image src={plane} />
+          <Image src={flightPics.sample()} />
         </Grid.Column>
         <Grid.Column id='flightInfo' width={9}>
           <h3>Price: {price}</h3>
