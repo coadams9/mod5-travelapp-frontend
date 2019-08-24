@@ -40,7 +40,7 @@ class HotelCard extends React.Component {
     )
   }
 }
-
+// -------
 const mapDispatchToProps = (dispatch) => {
   return {
     hotelToStore: (htl) => {
