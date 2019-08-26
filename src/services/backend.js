@@ -8,7 +8,7 @@ export function getAuthToken(loginInfo) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(loginInfo)
-  }).then(res => console.log(res))
+  }).then(res => res.json())
 }
 
 
