@@ -1,4 +1,4 @@
-const API = "http://localhost:3000"
+const API = "https://travapp-api99.herokuapp.com"
 
 
 export function getAuthToken(loginInfo) {
@@ -8,7 +8,7 @@ export function getAuthToken(loginInfo) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(loginInfo)
-  }).then(res => res.json())
+  }).then(res => console.log(res))
 }
 
 

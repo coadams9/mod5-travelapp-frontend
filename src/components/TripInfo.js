@@ -8,17 +8,17 @@ class TripInfo extends React.Component {
 
   deleteTrip = (event, trp) => {
     event.target.parentElement.parentElement.parentElement.remove()
-    fetch(`http://localhost:3000/trips/${trp.id}`, {
+    fetch(`https://travapp-api99.herokuapp.com/trips/${trp.id}`, {
       method: 'DELETE'
     })
   }
 
 
-  render(){
+  render() {
     const { trp } = this.props
     console.log(trp)
 
-    return(
+    return (
       <Table.Body>
         <Table.Row>
           <Table.Cell>
@@ -28,11 +28,11 @@ class TripInfo extends React.Component {
             Arriving At: {trp.arvdisplay}
           </Table.Cell>
           <Table.Cell>
-           Price: {trp.fltPrc}
-           <br />
-           Leaving at: {trp.leavingat}
-           <br />
-           Arriving at: {trp.arrivingat}
+            Price: {trp.fltPrc}
+            <br />
+            Leaving at: {trp.leavingat}
+            <br />
+            Arriving at: {trp.arrivingat}
           </Table.Cell>
           <Table.Cell>
             Hotel Name: {trp.hotelname}
