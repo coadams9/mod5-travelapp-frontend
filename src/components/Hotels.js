@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import DatePicker from "react-datepicker"
 import HotelCard from './HotelCard'
 import "react-datepicker/dist/react-datepicker.css"
-const KEY = '5ea02a9b2amshe55a7923df885fdp1e1fbajsn961d52a697bb'
+const KEY = process.env.REACT_APP_KEY
 
 
 

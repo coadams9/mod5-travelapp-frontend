@@ -20,7 +20,7 @@ import plane18 from '../images/plane18.jpg'
 
 
 
-const KEY = '5ea02a9b2amshe55a7923df885fdp1e1fbajsn961d52a697bb'
+const KEY = process.env.REACT_APP_KEY
 
 
 export function searchTerm1(value) {
