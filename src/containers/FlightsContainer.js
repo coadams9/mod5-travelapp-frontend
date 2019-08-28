@@ -8,7 +8,7 @@ import { getDepartDate, adults, cabin, bags, showFlights } from '../actions/inde
 
 
 
-// const KEY = process.env.REACT_APP_KEY
+const KEY = process.env.REACT_APP_KEY
 
 const options = [
   { key: 1, text: 'Economy', value: 'e' },
