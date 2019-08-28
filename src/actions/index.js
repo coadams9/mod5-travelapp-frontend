@@ -20,10 +20,12 @@ import plane18 from '../images/plane18.jpg'
 
 
 
-const KEY = process.env.REACT_APP_KEY
+// const KEY = process.env.REACT_APP_KEY
+debugger
 
 export function searchTerm1(value) {
   return dispatch => {
+    debugger
     fetch(`https://apidojo-kayak-v1.p.rapidapi.com/locations/search?where=/${value}`, {
       headers: {
         "Content-Type": "application/json",
@@ -32,6 +34,7 @@ export function searchTerm1(value) {
     })
       .then(res => res.json())
       .then(data => {
+        debugger
         dispatch({ type: 'DEPARTURES', data })
       })
     dispatch({ type: 'SRCH_LOCT1', value })
