@@ -1,4 +1,4 @@
-const API = "https://travapp-api99.herokuapp.com"
+const API = "http://localhost:3000/"
 
 
 export function getAuthToken(loginInfo) {
