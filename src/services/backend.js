@@ -22,5 +22,5 @@ export function newUser(username, password) {
       username: username,
       password: password
     })
-  }).then(res => res.json())
+  })
 }

@@ -32,7 +32,7 @@ class SignUp extends React.Component {
       })
       this.props.history.push("/login")
     } else {
-      alert('Are you drunk?? Your passwords dont match!!...sigh')
+      alert('Passwords do not match! Please try again.')
     }
   }
 

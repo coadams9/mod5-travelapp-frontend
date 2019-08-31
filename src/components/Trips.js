@@ -7,7 +7,7 @@ import TableHead from './TableHead'
 class Trips extends React.Component {
 
   saveTrip = (hotel, flight, arv, dpt, fltPrc) => {
-    fetch('https://travapp-api99.herokuapp.com/trips', {
+    fetch('http://localhost:3000/trips', {
       headers: {
         'Content-Type': 'application/json',
         'Access-Token': localStorage.getItem('token')
@@ -29,7 +29,7 @@ class Trips extends React.Component {
 
   tripInfo = () => {
     let userId = localStorage.userId
-    fetch(`https://travapp-api99.herokuapp.com/trips/${userId}`, {
+    fetch(`http://localhost:3000/trips/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

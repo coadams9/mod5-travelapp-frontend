@@ -8,7 +8,7 @@ class TripInfo extends React.Component {
 
   deleteTrip = (event, trp) => {
     event.target.parentElement.parentElement.parentElement.remove()
-    fetch(`https://travapp-api99.herokuapp.com/trips/${trp.id}`, {
+    fetch(`http://localhost:3000/trips/${trp.id}`, {
       method: 'DELETE'
     })
   }
