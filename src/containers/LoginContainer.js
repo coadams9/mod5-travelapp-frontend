@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom'
 
 class LoginContainer extends React.Component {
 
-  render(){
-    return(
+  render() {
+    return (
       <div id='loginContainer'>
-        <Link to='/login'><Button id='loginButt'>Login</Button></Link>
-        <Link to='/signUp'><Button id='signupButt'>SignUp</Button></Link>
+        <h1>Welcome to Pack Your Bags</h1>
+        <h2>Please <a href='/login'>Login</a> or <a href='/signup'>Sign Up</a></h2>
       </div>
     )
   }

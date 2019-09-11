@@ -7,7 +7,7 @@ import SignUp from './components/SignUp'
 import Hotels from './components/Hotels'
 import Trips from './components/Trips'
 import LoginContainer from './containers/LoginContainer'
-import './App.css';
+import './App.scss';
 import { Switch, Route } from 'react-router-dom'
 // import './semantic/dist/semantic.min.css'
 
