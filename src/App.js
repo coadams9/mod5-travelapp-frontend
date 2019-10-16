@@ -9,7 +9,7 @@ import Trips from './components/Trips'
 import LoginContainer from './containers/LoginContainer'
 import './App.scss';
 import { Switch, Route } from 'react-router-dom'
-// import './semantic/dist/semantic.min.css'
+import './semantic/dist/semantic.min.css'
 
 class App extends Component {
   render() {
