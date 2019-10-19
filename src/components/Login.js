@@ -36,16 +36,16 @@ class Login extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label id='labels'>Username</label>
-            <input name='username' id='inputtext' style={{ textAlign: 'center' }} placeholder='Username' value={username}
+            <input data-id='login.username' name='username' id='inputtext' style={{ textAlign: 'center' }} placeholder='Username' value={username}
               onChange={(e) => this.setState({ username: e.target.value })} />
           </Form.Field>
           <Form.Field>
             <label id='labels'>Password</label>
-            <input type='password' id='inputtext' style={{ textAlign: 'center' }} name='password' placeholder='password' value={password}
+            <input data-id='login.password' type='password' id='inputtext' style={{ textAlign: 'center' }} name='password' placeholder='password' value={password}
               onChange={(e) => this.setState({ password: e.target.value })} />
           </Form.Field>
           <div>
-            <Button color='yellow' type='submit'>Login</Button>
+            <Button data-id='login.button' color='yellow' type='submit'>Login</Button>
             <Button color='yellow' as={Link} to='/signUp'>SignUp</Button>
           </div>
         </Form>
