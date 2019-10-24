@@ -1,4 +1,3 @@
-
 import login from '../support/pages/login-page-test'
 
 
@@ -9,5 +8,7 @@ describe("Logging in", () => {
     login.username().type('Cory')
     login.password().type('1234')
     login.button().click()
+
+    cy.location('pathname').should('eq', '/home')
   })
 })
