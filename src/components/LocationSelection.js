@@ -41,6 +41,7 @@ class LocationSelection extends React.Component {
                 placeholder='Depart From...'
                 onSearchChange={this.handleSearchChange1}
                 showNoResults={false}
+                data-id='departs.input'
               />
               <div id='departs'>
                 {departs}
@@ -52,6 +53,7 @@ class LocationSelection extends React.Component {
                 placeholder='Arrive At...'
                 onSearchChange={this.handleSearchChange2}
                 showNoResults={false}
+                data-id='arrivings.input'
               />
               <div id='arrivals'>
                 {arrives}

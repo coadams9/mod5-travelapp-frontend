@@ -1,3 +1,26 @@
+import login from '../support/pages/login-page-test'
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.visit('http://localhost:3001')
+    login.link().click()
+    login.username().type(username)
+    login.password().type(password)
+    login.button().click()
+
+    cy.location('pathname').should('eq', '/home')
+})
+
+
+
+
+
+
+
+
+
+
+
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
