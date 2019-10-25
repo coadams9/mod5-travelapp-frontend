@@ -9,5 +9,18 @@ describe('Locations are loaded', () => {
                     .type('a')
             })
         })
+
+        cy.get('[data-id="depart.checkbox"]').first().children('input').check({ force: true })
+
+        cy.get('[data-id="arrivings.input"]').within(() => {
+            cy.get('input')
+                .type('b')
+        })
+
+        cy.get('[data-id="arrive.checkbox"]').first().children('input').check({ force: true })
     })
+
+
 })
+
+
