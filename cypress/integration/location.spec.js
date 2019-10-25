@@ -20,6 +20,12 @@ describe('Locations are loaded', () => {
         cy.get('[data-id="arrive.checkbox"]').first().children('input').check({ force: true })
     })
 
+    it('clicks button and redirects to flight page', () => {
+        cy.contains('Choose Flight').first().click({ force: true })
+
+        cy.location('pathname').should('eq', '/flights')
+    })
+
 
 })
 
