@@ -16,12 +16,12 @@ class DepartureCard extends React.Component {
     this.props.selectedDepart(dpt)
   }
 
-  render(){
+  render() {
 
     const { selected } = this.state
     const { dpt } = this.props
 
-    return(
+    return (
       <Card.Group itemsPerRow={2}>
         <Card>
           <Image src={dpt.destination_images.image_jpeg} />
@@ -32,7 +32,7 @@ class DepartureCard extends React.Component {
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
-              <Checkbox label='Depart From Here' checked={selected} onChange={(event) => this.handleChange(dpt)} />
+            <Checkbox data-id="depart.checkbox" label='Depart From Here' checked={selected} onChange={(event) => this.handleChange(dpt)} />
           </Card.Content>
         </Card>
       </Card.Group>

@@ -17,12 +17,12 @@ class ArrivalCard extends React.Component {
 
   }
 
-  render(){
+  render() {
 
     const { selected } = this.state
     const { arv } = this.props
 
-    return(
+    return (
       <Card.Group itemsPerRow={2}>
         <Card>
           <Image src={arv.destination_images.image_jpeg} />
@@ -33,7 +33,7 @@ class ArrivalCard extends React.Component {
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
-              <Checkbox label='Arrive Here' checked={selected} onChange={(event) => this.handleChange(arv)}/>
+            <Checkbox data-id='arrive.checkbox' label='Arrive Here' checked={selected} onChange={(event) => this.handleChange(arv)} />
           </Card.Content>
         </Card>
       </Card.Group>
