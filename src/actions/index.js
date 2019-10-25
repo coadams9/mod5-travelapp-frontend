@@ -33,7 +33,6 @@ export function searchTerm1(value) {
     })
       .then(res => res.json())
       .then(data => {
-        debugger
         dispatch({ type: 'DEPARTURES', data })
       })
     dispatch({ type: 'SRCH_LOCT1', value })
